@@ -1,7 +1,7 @@
 package model;
 
 public interface Pieces {
-	
+	//bye
 	public boolean capture();
 	public Couleur getCouleur();
 	public int getX();
