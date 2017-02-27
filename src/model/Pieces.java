@@ -1,7 +1,7 @@
 package model;
 
 public interface Pieces {
-	
+	//bye
 	public boolean capture();
 	public Couleur getCouleur();
 	public int getX();
@@ -9,4 +9,5 @@ public interface Pieces {
 	public boolean isMoveOk(int xFinal,int yFinal);
 	boolean move(int xFinal, int yFinal);
 //bonjour
+	
 }
