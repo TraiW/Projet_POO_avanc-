@@ -26,10 +26,11 @@ public class AbstractPiece implements Pieces{
 		return 0;
 		
 	}
+	
 	public boolean isMoveOk(int xFinal,int yFinal){
 		return false;
-		
 	}
+	
 	public boolean move(int xFinal, int yFinal){
 		return false;
 		
