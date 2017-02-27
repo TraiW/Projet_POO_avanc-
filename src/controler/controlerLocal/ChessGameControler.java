@@ -3,7 +3,7 @@ package controler.controlerLocal;
 import model.Coord;
 import model.observable.ChessGame;
 import controler.AbstractChessGameControler;
-//lolsa
+//lolsaa
 /**
  * @author francoise.perrin
  * 
