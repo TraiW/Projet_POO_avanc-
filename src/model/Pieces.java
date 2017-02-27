@@ -9,5 +9,5 @@ public interface Pieces {
 	public boolean isMoveOk(int xFinal,int yFinal);
 	boolean move(int xFinal, int yFinal);
 //bonjour
-	
+	//au revoir
 }
