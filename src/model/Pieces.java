@@ -10,4 +10,5 @@ public interface Pieces {
 	boolean move(int xFinal, int yFinal);
 //bonjour
 	//au revoir
+	//
 }
