@@ -3,7 +3,7 @@ package controler;
 import model.Coord;
 import model.Couleur;
 import model.observable.ChessGame;
-
+//lol
 
 /**
  * @author francoise.perrin
