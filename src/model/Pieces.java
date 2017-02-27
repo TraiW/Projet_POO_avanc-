@@ -8,5 +8,5 @@ public interface Pieces {
 	public int getY();
 	public boolean isMoveOk(int xFinal,int yFinal);
 	boolean move(int xFinal, int yFinal);
-//pull
+//pulll
 }
