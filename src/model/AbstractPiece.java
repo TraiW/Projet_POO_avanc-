@@ -51,7 +51,7 @@ public abstract class AbstractPiece implements Pieces{
 		System.out.println("La tour bouge en 0,5");
 		testTour.move(4,5);
 		System.out.println("La tour a bien bougé");
-		
+		 
 	}
 
 }
