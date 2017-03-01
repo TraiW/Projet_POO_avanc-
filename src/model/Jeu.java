@@ -19,7 +19,7 @@ public class Jeu {
 
 	@Override
 	public String toString() {
-		return "Jeu :\n [pieces=" + pieces + "]";
+		return "Jeu :\n [pieces=\n" + pieces + "]";
 	}
 	
 	private Pieces findPiece(int x, int y)
@@ -116,11 +116,15 @@ public class Jeu {
 		}
 		return nomPiece;
 	}
-
+	
+	public Couleur getCouleur(){
+		Pieces p=null;
+		return p.getCouleur();
+	}
 
 	public boolean capture(int xCatch,int yCatch)
 	{
-		
+		return true;
 	}
 
 	public static void main(String[] args) {
