@@ -1,6 +1,6 @@
 package model;
 
-public class AbstractPiece implements Pieces{
+public abstract class AbstractPiece implements Pieces{
 	
 	public Coord coord;
 	public Couleur couleur;
@@ -11,29 +11,38 @@ public class AbstractPiece implements Pieces{
 		
 	}
 	public boolean capture(){
-		return false;
+		this.coord.x=-1;
+		this.coord.y=-1;
+		return true;
 		
 	}
 	public Couleur getCouleur(){
-		return couleur;
-		
+		return this.couleur;
+		 
 	}
 	public int getX(){
-		return 0;
-		
+		return this.coord.x;
 	}
 	public int getY(){
-		return 0;
+		return this.coord.y;
+	}
+	public abstract boolean isMoveOk(int xFinal,int yFinal);
 		
-	}
-	
-	public boolean isMoveOk(int xFinal,int yFinal){
-		return false;
-	}
-	
 	public boolean move(int xFinal, int yFinal){
+		
+		if(isMoveOk(xFinal,yFinal)==true)
+		{
+			this.coord.x=xFinal;
+			this.coord.y=yFinal;
+			return true;
+		}
 		return false;
 		
 	}
+	@Override
+	public String toString() {
+		return "AbstractPièce [coord=" + coord + ", couleur=" + couleur + "]";
+	}
+	
 
 }
