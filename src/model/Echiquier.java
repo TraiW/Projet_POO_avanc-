@@ -60,7 +60,7 @@ public class Echiquier implements BoardGames {
 	
 	@Override
 	public String toString() {
-		return "Echiquier []";
+		return "Echiquier :\n [jeu=" + pieces + "]";
 	}
 
 }
