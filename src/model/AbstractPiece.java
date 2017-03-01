@@ -42,16 +42,16 @@ public abstract class AbstractPiece implements Pieces{
 	}
 	@Override
 	public String toString() {
-		return "AbstractPièce [coord=" + coord + ", couleur=" + couleur + "]";
+		return "AbstractPièce [coord=" + coord + ", couleur=" + couleur + "] \n";
 	}
-	public static void main(String[] args) 
-	{
-		Pieces testTour= new Fou(Couleur.NOIR,new Coord(5,6));
-		System.out.println("création tour");
-		System.out.println("La tour bouge en 0,5");
-		testTour.move(4,5);
-		System.out.println("La tour a bien bougé");
-		 
-	}
+//	public static void main(String[] args) 
+//	{
+////		Pieces testTour= new Fou(Couleur.NOIR,new Coord(5,6));
+////		System.out.println("création tour");
+////		System.out.println("La tour bouge en 0,5");
+////		testTour.move(4,5);
+////		System.out.println("La tour a bien bougé");
+//		 
+//	}
 
 }
