@@ -1,61 +1,38 @@
 package model;
 
-public class Echiquier implements Pieces {
+public class Echiquier implements BoardGames {
 
+	Jeu jeuBlanc = new Jeu(Couleur.BLANC);
+	Jeu jeuNoir = new Jeu(Couleur.NOIR);
+	Jeu jeuCourant = jeuBlanc;
+	Jeu jeuNonCourant = jeuNoir;
 	
-
-	@Override
-	public boolean capture() {
+	public void switchJoueur() {
 		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Couleur getCouleur() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getY() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean isMoveOk(int xFinal, int yFinal) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean move(int xFinal, int yFinal) {
-		// TODO Auto-generated method stub
-		return false;
+		if(jeuCourant == jeuBlanc)
+		{
+			jeuCourant = jeuNoir;
+			jeuNonCourant = jeuBlanc;
+		}
+		else
+		{
+			jeuCourant = jeuBlanc;
+			jeuNonCourant = jeuNoir;
+		}
 	}
 
 	public Object getPiecesIHM() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	public String getMessage() {
+	
+	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
-	public void switchJoueur() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public boolean isEnd() {
+	@Override
+	public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -69,7 +46,21 @@ public class Echiquier implements Pieces {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	public boolean isEnd() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
+	
+	@Override
+	public String toString() {
+		return "Echiquier []";
+	}
 
 }
