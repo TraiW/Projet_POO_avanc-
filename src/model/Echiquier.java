@@ -29,7 +29,7 @@ public class Echiquier implements BoardGames {
 	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal) {
 		// TODO Auto-generated method stub
 		if (jeuCourant.isPieceHere(xFinal, yFinal)) {
-			if(jeuCourant. == jeuCourant.getCouleur())
+			if(jeuCourant.getPieceColor(xInit, yInit) == jeuCourant.getPieceColor(xFinal, yFinal))
 				return false;
 		}
 		return true;
