@@ -73,6 +73,25 @@ public class Jeu {
 		
 		
 	}
+	public Couleur getPieceColor(int x,int y)
+	{
+		Pieces p=null;
+		Couleur retour=null;
+		if(isPieceHere(x,y)==true)
+		{
+			p=findPiece(x,y);
+			retour=p.getCouleur();
+			return retour;
+		}
+		return retour;
+	}
+	public boolean isPawnPromotion(int xFinal,int yFinal)
+	{
+		if(this.getPieceColor(xFinal,yFinal)==Couleur.BLANC)
+		{
+			
+		}
+	}
 	public boolean move(int xInit,int yInit,int xFinal,int yFinal)
 	{
 		Pieces p=null;
@@ -97,13 +116,7 @@ public class Jeu {
 		
 	}
 	
-	public void setPossibleCapture()
-	{
-		
-		CapturePossible=true;
-		CapturePossible=false;
 
-	}
 	
 	public String getPieceType(int x,int y)
 	{
@@ -117,16 +130,58 @@ public class Jeu {
 		return nomPiece;
 	}
 	
-	public Couleur getCouleur(){
-		Pieces p=null;
-		return p.getCouleur();
-	}
 
-	public boolean capture(int xCatch,int yCatch)
+
+	public Coord getKingCoord()
 	{
-		return true;
-	}
+		Coord retour = new Coord(-1,-1);
 
+		for(Pieces p : pieces)
+		{
+			if (p.getClass().getSimpleName().equals("Roi")==true)
+			{
+				retour.x=p.getX();
+				retour.y=p.getY();
+				return retour;
+			}
+		}
+		System.out.println("Problème fct Coord getKingCoord() dans Jeu");
+		return retour;
+	}
+	/**
+	* @return une vue de la liste des pièces en cours
+	* ne donnant que des accès en lecture sur des PieceIHM
+	* (type piece + couleur + liste de coordonnées)
+	*/
+	public List<PieceIHM> getPiecesIHM(){
+		PieceIHM newPieceIHM = null;
+		List<PieceIHM> list = new LinkedList<PieceIHM>();
+		
+			for (Pieces piece : pieces){
+				boolean existe = false;
+				// si le type de piece existe déjà dans la liste de PieceIHM
+				// ajout des coordonnées de la pièce dans la liste de Coord de ce type
+				// si elle est toujours en jeu (x et y != -1)
+				for ( PieceIHM pieceIHM : list){
+					if ((pieceIHM.getTypePiece()).equals(piece.getClass().getSimpleName())){
+					existe = true;
+						if (piece.getX() != -1){
+						pieceIHM.add(new Coord(piece.getX(), piece.getY()));
+						}
+					}
+				}
+					// sinon, création d'une nouvelle PieceIHM si la pièce est toujours en jeu
+					if (! existe) {
+						if (piece.getX() != -1){
+						newPieceIHM = new PieceIHM(piece.getClass().getSimpleName(),
+						piece.getCouleur());
+						newPieceIHM.add(new Coord(piece.getX(), piece.getY()));
+						list.add(newPieceIHM);
+						}
+					}
+			}
+		return list;
+	}
 	public static void main(String[] args) {
 	
 		Jeu blanc= new Jeu(Couleur.BLANC);
