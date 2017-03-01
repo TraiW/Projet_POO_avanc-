@@ -36,6 +36,7 @@ public abstract class AbstractPiece implements Pieces{
 			this.coord.y=yFinal;
 			return true;
 		}
+		System.out.println("deplacement refusé");
 		return false;
 		
 	}
@@ -43,6 +44,14 @@ public abstract class AbstractPiece implements Pieces{
 	public String toString() {
 		return "AbstractPièce [coord=" + coord + ", couleur=" + couleur + "]";
 	}
-	
+	public static void main(String[] args) 
+	{
+		Pieces testTour= new Fou(Couleur.NOIR,new Coord(5,6));
+		System.out.println("création tour");
+		System.out.println("La tour bouge en 0,5");
+		testTour.move(4,5);
+		System.out.println("La tour a bien bougé");
+		
+	}
 
 }
