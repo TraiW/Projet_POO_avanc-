@@ -28,7 +28,11 @@ public class Echiquier implements BoardGames {
 	
 	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal) {
 		// TODO Auto-generated method stub
-		return false;
+		if (jeuCourant.isPieceHere(xFinal, yFinal)) {
+			if(jeuCourant. == jeuCourant.getCouleur())
+				return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -58,9 +62,18 @@ public class Echiquier implements BoardGames {
 	}
 
 	
+	
+	
 	@Override
 	public String toString() {
-		return "Echiquier :\n [jeu=" + pieces + "]";
+		return "Echiquier\n [jeuCourant=" + jeuCourant + "\n jeuNonCourant="
+				+ jeuNonCourant + "]";
+	}
+
+	public static void main(String[] args) {
+		Echiquier echec = new Echiquier();
+		echec.switchJoueur();
+		System.out.println(echec);
 	}
 
 }
