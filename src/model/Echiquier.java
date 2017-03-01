@@ -2,13 +2,13 @@ package model;
 
 public class Echiquier implements BoardGames {
 
+
 	Jeu jeuBlanc = new Jeu(Couleur.BLANC);
 	Jeu jeuNoir = new Jeu(Couleur.NOIR);
 	Jeu jeuCourant = jeuBlanc;
 	Jeu jeuNonCourant = jeuNoir;
 	
 	public void switchJoueur() {
-		// TODO Auto-generated method stub
 		if(jeuCourant == jeuBlanc)
 		{
 			jeuCourant = jeuNoir;
