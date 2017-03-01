@@ -2,7 +2,7 @@ package model;
 
 public class Echiquier implements Pieces {
 
-
+	
 
 	@Override
 	public boolean capture() {

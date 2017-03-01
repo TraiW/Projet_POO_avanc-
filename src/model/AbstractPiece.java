@@ -2,8 +2,8 @@ package model;
 
 public abstract class AbstractPiece implements Pieces{
 	
-	public Coord coord;
-	public Couleur couleur;
+	public Coord coord=null;
+	public Couleur couleur=null;
 	
 	public AbstractPiece(Couleur couleur, Coord coord){
 		this.couleur=couleur;
@@ -42,7 +42,7 @@ public abstract class AbstractPiece implements Pieces{
 	}
 	@Override
 	public String toString() {
-		return "AbstractPièce [coord=" + coord + ", couleur=" + couleur + "] \n";
+		return "Pièce [coord=" + coord + ", couleur=" + couleur + "] \n";
 	}
 //	public static void main(String[] args) 
 //	{
