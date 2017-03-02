@@ -116,7 +116,7 @@ public class Jeu {
 		
 	}
 	
-
+//test ordi val
 	
 	public String getPieceType(int x,int y)
 	{
