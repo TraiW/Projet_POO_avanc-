@@ -8,10 +8,11 @@ public class Jeu {
 	
 	public List<Pieces> pieces = null;
 	public boolean CapturePossible=false;
-	
+	Couleur couleur;
 	
 	public Jeu(Couleur couleur)
 	{
+		this.couleur=couleur;
 		pieces= ChessPiecesFactory.newPieces(couleur);
 
 	}
@@ -184,11 +185,40 @@ public class Jeu {
 	}
 	public static void main(String[] args) {
 	
-		Jeu blanc= new Jeu(Couleur.BLANC);
-		Jeu noir = new Jeu(Couleur.NOIR);
-		System.out.println(blanc);
-		System.out.println(noir);
-
+		Jeu J1= new Jeu(Couleur.BLANC);
+		Jeu J2 = new Jeu(Couleur.NOIR);
+//		System.out.println(blanc);
+//		System.out.println(noir);
+		//Test de la fonction findPiece
+				/*Pieces P= null;
+				P=J1.findPiece(0,7);
+				System.out.println(P);*/
+				
+				// Test fonction getKingCoord()
+				//System.out.println(J1.getKingCoord());
+				
+				//Test fonction get PieceColor 
+				//System.out.println(J1.getPieceColor(7, 0));
+				
+				//Test de la fonction getPiecesIHM()
+				//System.out.println(J1.getPiecesIHM());
+				
+				//Test de la fonction getPieceType(int x, int y)
+				//System.out.println(J1.getPieceType(0,7));
+				
+				//Test de la fonction isMoveOk ()
+				/*System.out.println(J1.isMoveOk(0, 7, 1, 8));
+				System.out.println(J1.isMoveOk(0, 7, 8, 7));*/
+				
+				//Test fonction isPieceHere (x,y)
+				/*System.out.println(J1.isPieceHere(0, 7));
+				System.out.println(J1.isPieceHere(0, 0));*/
+				
+				//Test fonction move
+				/*boolean t=J1.move(0,7,5,7);
+				System.out.println(J1);
+				t=J1.move(0,7,8,9);
+				System.out.println(J1);*/
 
 
 		
