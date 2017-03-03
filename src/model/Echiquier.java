@@ -78,24 +78,7 @@ public class Echiquier implements BoardGames {
 			//renvoi true si:
 			//on peut avancer tout droit sans présence de piece
 			// ou en diago si piece adverse présente sauf si c'est roi
-			
-//			if(this. jeuNonCourant.isPieceHere(xFinal, yFinal)==false) // PAS de pièce à l'arrivée
-//			{
-//				// et avance en diag
-//				if(this.jeuCourant.couleur==this.jeuBlanc.couleur){ // blancs => Y descendant
-//					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal==yInit-1))
-//					{
-//						return false;
-//					}					
-//				} 
-//				else { //noirs => monte
-//					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal==yInit+1))	
-//						return false;
-//				}
-//			}
-//			
-//			else { //TODO
-//			}
+
 			
 			if(this.jeuCourant.couleur==this.jeuBlanc.couleur) //jeu blanc
 			{
@@ -145,11 +128,10 @@ public class Echiquier implements BoardGames {
 
 					}
 				}
-				return true;
-
-
-				
+			
 			}
+			return true;
+
 		}
 		
 		
