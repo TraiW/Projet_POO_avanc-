@@ -90,7 +90,7 @@ public class Jeu {
 	{
 		if(this.getPieceColor(xFinal,yFinal)==Couleur.BLANC)
 		{
-			
+			return true;//TODO
 		}
 	}
 	public boolean move(int xInit,int yInit,int xFinal,int yFinal)
