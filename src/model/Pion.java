@@ -8,7 +8,15 @@ public class Pion extends AbstractPiece implements Pions{
 	
 	public boolean isMoveOk(int xFinal,int yFinal){
 		
-		if(coord.y + 1 == yFinal) //Gérer le premier deplacement
+		if(coord.x ==1 || coord.x == 6)
+		{
+			if(coord.y ==2 || coord.y == -2)
+				return true;
+			else
+				return false;
+		}
+		
+		if(coord.y + 1 == yFinal || coord.y -1 == yFinal) //Gérer le premier deplacement
 			return true;
 		else 
 			return false;	

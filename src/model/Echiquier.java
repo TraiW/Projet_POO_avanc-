@@ -139,7 +139,7 @@ public class Echiquier implements BoardGames {
 		 if(this. jeuNonCourant.isPieceHere(xFinal, yFinal)){
 			
 			// prendre la pièce intermédiaire (vigilance pour le cas du pion) et déplacer la pièce -->true,
-				this. jeuNonCourant.setPossibleCapture();
+				//this. jeuNonCourant.setPossibleCapture();
 				
 				System.out.println("Capture");
 				return true;
@@ -155,7 +155,11 @@ public class Echiquier implements BoardGames {
 
 	@Override
 	public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
-		// TODO Auto-generated method stub
+		if(this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal) == true)
+		{
+			if(this.jeuCourant.move(xInit, yInit, xFinal, yFinal)==true)
+				return true;
+		}
 		return false;
 	}
 
@@ -192,6 +196,7 @@ public class Echiquier implements BoardGames {
 		Echiquier echec = new Echiquier();
 		echec.switchJoueur();
 		System.out.println(echec);
+		System.out.println(echec.isMoveOk(0,6,2,6));
 	}
 
 }
