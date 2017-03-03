@@ -43,14 +43,18 @@ public class Jeu {
 	
 	public boolean isPieceHere(int x,int y)
 	{
-		Pieces p=null;
-		p=findPiece(x,y);
-		if(p==null)
-		{
-			return false;
-		}	
 		
-		return true;
+		for(Pieces p :pieces)
+		{
+			if(p.getX()==x && p.getY()==y)
+			{
+				return true;
+	
+			}
+			
+		}
+		return false;
+
 	}
 	
 	public boolean isMoveOk(int xInit,int yInit,int xFinal,int yFinal)
@@ -77,13 +81,18 @@ public class Jeu {
 	}
 	public Couleur getPieceColor(int x,int y)
 	{
-		Pieces p=null;
+		Pieces p;
 		Couleur retour=null;
 		if(isPieceHere(x,y)==true)
 		{
+			System.out.println("piece trouvé\n");
 			p=findPiece(x,y);
 			retour=p.getCouleur();
 			return retour;
+		}
+		else
+		{
+			System.out.println("Il n'y a pas de pièce ici (fonction_getColor)");
 		}
 		return retour;
 	}
@@ -188,18 +197,21 @@ public class Jeu {
 	
 		Jeu J1= new Jeu(Couleur.BLANC);
 		Jeu J2 = new Jeu(Couleur.NOIR);
-//		System.out.println(blanc);
-//		System.out.println(noir);
+		System.out.println(J1);
+		System.out.println(J2);
 		//Test de la fonction findPiece
-				/*Pieces P= null;
-				P=J1.findPiece(0,7);
-				System.out.println(P);*/
+//				Pieces P= null;
+//				P=J1.findPiece(0,7);
+//				System.out.println(P);
 				
 				// Test fonction getKingCoord()
-				//System.out.println(J1.getKingCoord());
+//				System.out.println(J1.getKingCoord());
+//				System.out.println(J2.getKingCoord());
+
 				
 				//Test fonction get PieceColor 
-				//System.out.println(J1.getPieceColor(7, 0));
+				System.out.println(J1.getPieceColor(0, 7));
+				System.out.println(J2.getPieceColor(7, 0));
 				
 				//Test de la fonction getPiecesIHM()
 				//System.out.println(J1.getPiecesIHM());
