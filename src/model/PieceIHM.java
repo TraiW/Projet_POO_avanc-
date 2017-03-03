@@ -52,6 +52,6 @@ public  class PieceIHM {
 	@Override
 	public String toString() {
 		return "PieceIHM [type=" + type + ", couleur=" + couleur + ", list="
-				+ list + "]";
+				+ list + "]\n";
 	}
 }
