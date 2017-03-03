@@ -3,8 +3,8 @@ package model;
 public class Echiquier implements BoardGames {
 
 
-	Jeu jeuBlanc = new Jeu(Couleur.BLANC);
-	Jeu jeuNoir = new Jeu(Couleur.NOIR);
+	Jeu jeuBlanc;
+	Jeu jeuNoir;
 	Jeu jeuCourant;
 	Jeu jeuNonCourant;
 	
@@ -79,24 +79,79 @@ public class Echiquier implements BoardGames {
 			//on peut avancer tout droit sans présence de piece
 			// ou en diago si piece adverse présente sauf si c'est roi
 			
-			if(this. jeuNonCourant.isPieceHere(xFinal, yFinal)==false) // PAS de pièce à l'arrivée
+//			if(this. jeuNonCourant.isPieceHere(xFinal, yFinal)==false) // PAS de pièce à l'arrivée
+//			{
+//				// et avance en diag
+//				if(this.jeuCourant.couleur==this.jeuBlanc.couleur){ // blancs => Y descendant
+//					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal==yInit-1))
+//					{
+//						return false;
+//					}					
+//				} 
+//				else { //noirs => monte
+//					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal==yInit+1))	
+//						return false;
+//				}
+//			}
+//			
+//			else { //TODO
+//			}
+			
+			if(this.jeuCourant.couleur==this.jeuBlanc.couleur) //jeu blanc
+			{
+				if(yFinal!=yInit+1 || xFinal !=xInit) //verifie qu'on avance bien droit et dans la bonne direction
+				{
+					return false;
+				}
+			}
+			else//jeux noir
+			{
+				if(yFinal!=yInit-1 || xFinal !=xInit)
+				{
+					return false;
+				}
+			}
+			//pas de piece adverse à l'azrrivé donc de l'autre couleur osus entendu
+			if(this.jeuNonCourant.isPieceHere(xFinal, yFinal)==false) // PAS de pièce à l'arrivée
 			{
 				// et avance en diag
 				if(this.jeuCourant.couleur==this.jeuBlanc.couleur){ // blancs => Y descendant
-					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal==yInit-1))
+					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))
 					{
 						return false;
 					}					
 				} 
 				else { //noirs => monte
-					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal==yInit+1))	
+					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))	
 						return false;
 				}
 			}
-			
-			else { //TODO
+			else
+			{
+				if(this.jeuCourant.couleur==this.jeuBlanc.couleur)
+				{ 
+					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))
+					{
+						//capture
+						return false;
+					}					
+				} 
+				else 
+				{ 
+					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))	
+					{
+						//capture
+						return false;
+
+					}
+				}
+				return true;
+
+
+				
 			}
 		}
+		
 		
 		 if(this. jeuNonCourant.isPieceHere(xFinal, yFinal)){
 			
@@ -106,8 +161,6 @@ public class Echiquier implements BoardGames {
 				System.out.println("Capture");
 				return true;
 		}
-	
-
 		//		s'il existe une pièce positionnées aux coordonnées finales :
 		//si elle est de la même couleur --> false ou tentative roque du roi,
 		 
