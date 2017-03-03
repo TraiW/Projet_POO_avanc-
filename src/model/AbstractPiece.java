@@ -34,6 +34,7 @@ public abstract class AbstractPiece implements Pieces{
 		{
 			this.coord.x=xFinal;
 			this.coord.y=yFinal;
+			System.out.println("déplacement effectué");
 			return true;
 		}
 		System.out.println("deplacement refusé");

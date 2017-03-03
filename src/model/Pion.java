@@ -31,8 +31,8 @@ public class Pion extends AbstractPiece implements Pions{
 			return false;
 	}
 	
-	public boolean move(int x,int y){
-		return true;
-	}
+//	public boolean move(int x,int y){
+//		return true;
+//	}
 
 }

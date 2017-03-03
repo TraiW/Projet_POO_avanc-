@@ -111,7 +111,7 @@ public class Jeu {
 		{
 			p=findPiece(xInit,yInit);
 
-			if(isMoveOk(xInit,yInit, yFinal, yFinal)==true)
+			if(isMoveOk(xInit,yInit, xFinal, yFinal)==true)
 			{
 				p.move(xFinal,yFinal);
 				return true;
@@ -218,7 +218,7 @@ public class Jeu {
 //				System.out.println(J1.getPiecesIHM());
 				
 				//Test de la fonction getPieceType(int x, int y)
-				System.out.println(J1.getPieceType(6,7));
+				//System.out.println(J1.getPieceType(6,7));
 				
 				//Test de la fonction isMoveOk ()
 				/*System.out.println(J1.isMoveOk(0, 7, 1, 8));
@@ -229,10 +229,10 @@ public class Jeu {
 				System.out.println(J1.isPieceHere(0, 0));*/
 				
 				//Test fonction move
-				/*boolean t=J1.move(0,7,5,7);
-				System.out.println(J1);
-				t=J1.move(0,7,8,9);
-				System.out.println(J1);*/
+//		System.out.println(J1);
+//
+//				boolean t=J1.move(0,7,5,7);
+//				System.out.println(J1);
 
 
 		

@@ -36,6 +36,7 @@ public class Echiquier implements BoardGames {
         List<PieceIHM> list = new LinkedList<PieceIHM>();
         list.addAll(this.jeuCourant.getPiecesIHM());
         list.addAll(this.jeuNonCourant.getPiecesIHM());     
+        System.out.println(list);
         return list;
     }
 	
@@ -75,7 +76,7 @@ public class Echiquier implements BoardGames {
 		
 		else if(this.jeuCourant.getPieceType(xInit, yInit).equals("Pion"))
 		{
-			
+			System.out.println("Pion");
 			// return false si :
 			// avance droit + pièce à l'arrivée
 			// avance en diag. et PAS de pièce à l'arrivée
@@ -87,13 +88,16 @@ public class Echiquier implements BoardGames {
 			
 			if(this.jeuCourant.couleur==this.jeuBlanc.couleur) //jeu blanc
 			{
+
 				if((yFinal!=yInit-1 && xFinal !=xInit) || yFinal!=yInit-2 ) //verifie qu'on avance bien droit et dans la bonne direction
 				{
+
 					return false;
 				}
 			}
 			else//jeux noir
 			{
+
 				if((yFinal!=yInit+1 && xFinal !=xInit ) || yFinal!=yInit+2 )
 				{
 					return false;
@@ -102,16 +106,23 @@ public class Echiquier implements BoardGames {
 			//pas de piece adverse à l'azrrivé donc de l'autre couleur osus entendu
 			if(this.jeuNonCourant.isPieceHere(xFinal, yFinal)==false) // PAS de pièce à l'arrivée
 			{
+
 				// et avance en diag
 				if(this.jeuCourant.couleur==this.jeuBlanc.couleur){ // blancs => Y descendant
+
 					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))
 					{
+						System.out.println("isMoveOk_0");
+
 						return false;
-					}					
+					}	
+
 				} 
 				else { //noirs => monte
 					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))	
 					{
+						System.out.println("isMoveOk_1");
+
 						return false;
 					}
 						
@@ -119,6 +130,7 @@ public class Echiquier implements BoardGames {
 			}
 			else
 			{
+
 				if(this.jeuCourant.couleur==this.jeuBlanc.couleur)
 				{ 
 					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))
@@ -138,6 +150,8 @@ public class Echiquier implements BoardGames {
 				}
 			
 			}
+			System.out.println("OK : déplacement simple_0");
+
 			return true;
 
 		}
@@ -165,8 +179,12 @@ public class Echiquier implements BoardGames {
 	public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
 		if(this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal) == true)
 		{
-			if(this.jeuCourant.move(xInit, yInit, xFinal, yFinal)==true)
+			if(this.jeuCourant.move(xInit, yInit, xFinal, yFinal) == true)
+			{
+				// getPiecesIHM();
 				return true;
+			}
+				
 		}
 		return false;
 	}
