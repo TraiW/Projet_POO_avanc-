@@ -10,10 +10,8 @@ public class Pion extends AbstractPiece implements Pions{
 		
 		if(coord.y ==1 || coord.y == 6)
 		{
-			System.out.println("1");
 			if(coord.y + 2 ==yFinal  || coord.y -2 == yFinal)
 				{
-				System.out.println("2");
 				return true;
 				}
 			else

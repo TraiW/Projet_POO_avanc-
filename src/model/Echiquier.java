@@ -41,7 +41,6 @@ public class Echiquier implements BoardGames {
 	
 	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal)
 	{
-		System.out.println("3");
 		//	s'il n'existe pas de piece du jeu courant aux coordonnées initiales --> false,
 		if(this.jeuCourant.isPieceHere(xInit, yInit)==false) //fait
 		{
@@ -69,7 +68,6 @@ public class Echiquier implements BoardGames {
 		//		si position finale ne correspond pas à  algo de déplacement piece --> false,
 		else if(this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal)==false)//fait
 		{
-			System.out.println("5");
 			System.out.println("KO : la position finale ne correspond pas a l'algo de déplacement légal de la pièce");
 			return false;
 			}
@@ -89,17 +87,15 @@ public class Echiquier implements BoardGames {
 			
 			if(this.jeuCourant.couleur==this.jeuBlanc.couleur) //jeu blanc
 			{
-				if((yFinal!=yInit-1 || xFinal !=xInit) || yFinal!=yInit-2 ) //verifie qu'on avance bien droit et dans la bonne direction
+				if((yFinal!=yInit-1 && xFinal !=xInit) || yFinal!=yInit-2 ) //verifie qu'on avance bien droit et dans la bonne direction
 				{
-					System.out.println("4");
 					return false;
 				}
 			}
 			else//jeux noir
 			{
-				if((yFinal!=yInit+1 || xFinal !=xInit ) || yFinal!=yInit+2 )
+				if((yFinal!=yInit+1 && xFinal !=xInit ) || yFinal!=yInit+2 )
 				{
-					System.out.println("5");
 					return false;
 				}
 			}
@@ -110,14 +106,12 @@ public class Echiquier implements BoardGames {
 				if(this.jeuCourant.couleur==this.jeuBlanc.couleur){ // blancs => Y descendant
 					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))
 					{
-						System.out.println("6");
 						return false;
 					}					
 				} 
 				else { //noirs => monte
 					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))	
 					{
-						System.out.println("7");
 						return false;
 					}
 						
@@ -130,7 +124,6 @@ public class Echiquier implements BoardGames {
 					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))
 					{
 						//capture
-						System.out.println("8");
 						return false;
 					}					
 				} 
@@ -139,7 +132,6 @@ public class Echiquier implements BoardGames {
 					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))	
 					{
 						//capture
-						System.out.println("9");
 						return false;
 
 					}
