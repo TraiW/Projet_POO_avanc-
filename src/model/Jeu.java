@@ -211,7 +211,7 @@ public class Jeu {
 				
 				//Test fonction get PieceColor 
 				System.out.println(J1.getPieceColor(0, 7));
-				System.out.println(J2.getPieceColor(7, 0));
+//				System.out.println(J2.getPieceColor(7, 0));
 				
 				//Test de la fonction getPiecesIHM()
 				//System.out.println(J1.getPiecesIHM());
