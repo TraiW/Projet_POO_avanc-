@@ -102,6 +102,7 @@ public class Jeu {
 		{
 			return true;//TODO
 		}
+		return true;
 	}
 	public boolean move(int xInit,int yInit,int xFinal,int yFinal)
 	{
