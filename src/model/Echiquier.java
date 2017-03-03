@@ -153,6 +153,7 @@ public class Echiquier implements BoardGames {
 		}
 		
 		
+		
 		 if(this. jeuNonCourant.isPieceHere(xFinal, yFinal)){
 			
 			// prendre la pièce intermédiaire (vigilance pour le cas du pion) et déplacer la pièce -->true,
