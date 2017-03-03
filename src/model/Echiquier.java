@@ -38,12 +38,12 @@ public class Echiquier implements BoardGames {
 	{
 		
 		//	s'il n'existe pas de piece du jeu courant aux coordonnées initiales --> false,
-		if(this.jeuCourant.isPieceHere(xInit, yInit)==false)
+		if(this.jeuCourant.isPieceHere(xInit, yInit)==false) //fait
 		{
 			System.out.println("KO : la pièce séléctionnée ne vous appartient pas !");
 			return false;
 			}
-		else if(this.jeuCourant.isPieceHere(xFinal, yFinal)==true)
+		else if(this.jeuCourant.isPieceHere(xFinal, yFinal)==true)//fait
 		{
 			System.out.println("KO : déplacement sur une pièce du même joueur");
 
@@ -52,17 +52,17 @@ public class Echiquier implements BoardGames {
 		//		si les coordonnées finales ne sont pas valides ou égales aux initiales --> false,
 		else if(xInit==xFinal && yInit==yFinal)
 		{
-			System.out.println("KO : Aucun déplacement n'a été appliqué");
+			System.out.println("KO : Aucun déplacement n'a été appliqué"); //fait
 
 			return false;
 			}
 		else if(Coord.coordonnees_valides(xFinal, yFinal)==false) //renvoi false si les coord ne sont pas valides
 		{
-			System.out.println("KO : les coordonnées finales ne sont pas valides");
+			System.out.println("KO : les coordonnées finales ne sont pas valides");//fait
 			return false;
 			}
 		//		si position finale ne correspond pas à  algo de déplacement piece --> false,
-		else if(this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal)==false)
+		else if(this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal)==false)//fait
 		{
 			System.out.println("KO : la position finale ne correspond pas a l'algo de déplacement légal de la pièce");
 			return false;
@@ -194,9 +194,10 @@ public class Echiquier implements BoardGames {
 
 	public static void main(String[] args) {
 		Echiquier echec = new Echiquier();
+		System.out.println(echec);
 		echec.switchJoueur();
 		System.out.println(echec);
-		System.out.println(echec.isMoveOk(0,6,2,6));
+		echec.isMoveOk(0, 1, 0, 2);
 	}
 
 }

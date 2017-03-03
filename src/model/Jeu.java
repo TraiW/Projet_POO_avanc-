@@ -35,10 +35,10 @@ public class Jeu {
 				return p;
 	
 			}
-			System.out.println("Pas de pièce, impossible de la retourner (findPiece dans Jeu.java");
-			return fausse;//sert a rien on l'appelle qu'apres isPieceHere mais au cas ou
+
 		}
-		return fausse;
+		System.out.println("Pas de pièce, impossible de la retourner (findPiece dans Jeu.java");
+		return fausse;//sert a rien on l'appelle qu'apres isPieceHere mais au cas ou
 	}
 	
 	public boolean isPieceHere(int x,int y)
@@ -197,8 +197,8 @@ public class Jeu {
 	
 		Jeu J1= new Jeu(Couleur.BLANC);
 		Jeu J2 = new Jeu(Couleur.NOIR);
-		System.out.println(J1);
-		System.out.println(J2);
+//		System.out.println(J1);
+//		System.out.println(J2);
 		//Test de la fonction findPiece
 //				Pieces P= null;
 //				P=J1.findPiece(0,7);
@@ -210,14 +210,14 @@ public class Jeu {
 
 				
 				//Test fonction get PieceColor 
-				System.out.println(J1.getPieceColor(0, 7));
-//				System.out.println(J2.getPieceColor(7, 0));
+//				System.out.println(J1.getPieceColor(0, 7));
+//				System.out.println(J2.getPieceColor(0, 0));
 				
 				//Test de la fonction getPiecesIHM()
-				//System.out.println(J1.getPiecesIHM());
+//				System.out.println(J1.getPiecesIHM());
 				
 				//Test de la fonction getPieceType(int x, int y)
-				//System.out.println(J1.getPieceType(0,7));
+				System.out.println(J1.getPieceType(6,7));
 				
 				//Test de la fonction isMoveOk ()
 				/*System.out.println(J1.isMoveOk(0, 7, 1, 8));
