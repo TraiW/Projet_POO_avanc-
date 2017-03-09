@@ -39,11 +39,9 @@ public abstract class AbstractChessGameControler implements ChessGameControlers 
 		String promotionType = null; 
 
 		// si c'est bien au tour du joueur courant de jouer
-		System.out.println("test0");
 		if (this.isPlayerOK(initCoord)) {
 			// Déplacement métier
 			ret = this.moveModel(initCoord, finalCoord);
-			System.out.println("test1");
 
 
 			// Actions différentes selon les types de controleur
@@ -52,7 +50,6 @@ public abstract class AbstractChessGameControler implements ChessGameControlers 
 			}
 
 		}
-		System.out.println("test2");
 
 		return ret;
 	}
