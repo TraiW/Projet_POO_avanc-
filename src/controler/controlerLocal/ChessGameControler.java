@@ -9,10 +9,8 @@ import model.AbstractPiece;
 
 /**
  * @author francoise.perrin
- * 
  *         Ce controleur local précise comment empêcher un joueur à qui ce n'est pas le tour 
  *         de jouer, de déplacer une image de pièce sur le damier
- *
  */
 public class ChessGameControler extends AbstractChessGameControler {
 	
