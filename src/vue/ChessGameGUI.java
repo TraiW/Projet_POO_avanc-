@@ -60,9 +60,14 @@ public ChessGameGUI(String string, ChessGameControlers chessGameControler, Dimen
 	chessBoard.setPreferredSize( boardSize );
 	chessBoard.setBounds(0, 0, boardSize.width, boardSize.height);
 		 
-	for (int i = 0; i < 64; i++) {
+	for ( int i = 0; i < 64; i++) {
 		 JPanel square = new JPanel( new BorderLayout() );
 		 chessBoard.add( square );
+	
+		 JLabel num=new JLabel(Integer.toString(i));
+		 
+		 square.add(num);
+		 
 		 int row = (i / 8) % 2;
 		 if (row == 0)
 		 {
@@ -93,7 +98,7 @@ public void update(Observable arg0, Object arg1) {
 	  {
 		  piece = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(p.getTypePiece(), p.getCouleur())));
 		  panel = (JPanel) chessBoard.getComponent(c.x + c.y *8);
-		  panel.removeAll();
+		  panel.removeAll();//enlever le contenu
 		  panel.add(piece);
 		  
 	  
@@ -121,7 +126,10 @@ public void mousePressed(MouseEvent e){
 	  chessPiece.setLocation(e.getX() + xAdjustment, e.getY() + yAdjustment);
 	  chessPiece.setSize(chessPiece.getWidth(), chessPiece.getHeight());
 	  layeredPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
-//	  System.out.println("coord init2 dep : x= "+c.getX()/100+"y= "+c.getY()/100); // pour recup les coord de départ
+	  //System.out.println("mousPressed : "+c.getX()/100+" / "+c.getY()/100); // pour recup les coord de départ
+//	  System.out.println("coord init2 dep : x= "+parentLocation.x/100+"y= "+parentLocation.y/100); // pour recup les coord de départ
+//  System.out.println("coord  :  "+parentLocation); // pour recup les coord de départ
+
 	  cInit.x = c.getX()/100;
   cInit.y=c.getY()/100;
 	  
@@ -142,7 +150,7 @@ public void mouseDragged(MouseEvent me) {
 	 
 public void mouseReleased(MouseEvent e) {
 	
-	  Coord cfinal=new Coord(xAdjustment, xAdjustment);
+	  Coord cfinal=new Coord(0,0);
 
 	  if(chessPiece == null) 
 		  return;
@@ -151,14 +159,11 @@ public void mouseReleased(MouseEvent e) {
 	  Component c =  chessBoard.findComponentAt(e.getX(), e.getY()); 
 	  
 
-	//	 System.out.println("test released :"+c.getX()/100+" /"+c.getY()/100);// pour recup les coord d'arrivée
-	  cfinal.x=c.getX()/100;
-	  cfinal.y=c.getY()/100;
+	 //System.out.println("mouseReleased : "+e.getX()/100+" / "+e.getY()/100);// pour recup les coord d'arrivée
+	  cfinal.x=e.getX()/100;
+	  cfinal.y=e.getY()/100;
 	  
-	  if(chessGameControler.move(cInit, cfinal)==false)
-	  {
-		  return;
-	  }
+
 	  if (c instanceof JLabel){
 		  Container parent = c.getParent();
 		  parent.remove(0);
@@ -168,7 +173,10 @@ public void mouseReleased(MouseEvent e) {
 		  Container parent = (Container)c;
 		  parent.add( chessPiece );
 	  }
-	 
+	  if(chessGameControler.move(cInit, cfinal)==false)
+	  {
+		  return;
+	  }
 	  chessPiece.setVisible(true);
 }
 	 

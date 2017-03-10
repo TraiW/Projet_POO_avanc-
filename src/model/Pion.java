@@ -19,21 +19,40 @@ public class Pion extends AbstractPiece implements Pions{
  * 
  */
 	public boolean isMoveOk(int xFinal,int yFinal){
-		
+
 		if(coord.y ==1 || coord.y == 6)
 		{
-			if(coord.y + 2 ==yFinal  || coord.y -2 == yFinal)
+//			System.out.println("1");
+
+			if(coord.y==1)
+			{
+				if(yFinal==coord.y + 2)
 				{
-				return true;
+					System.out.println("true pion.java");
+					return true;
 				}
-			else
-				return false;
+			
+			}
+			else if(coord.y==6) //coord.y==6
+			{
+				if(yFinal==coord.y - 2)
+				{
+					return true;
+				}
+			}	
 		}
 		
-		if(coord.y + 1 == yFinal || coord.y -1 == yFinal) //Gérer le premier deplacement
+		if(yFinal==coord.y + 1   || yFinal == coord.y -1 ) //Gérer le premier deplacement
+		{
+			//System.out.println("isMoveOk du pion.java OK");
 			return true;
+		}
 		else 
-			return false;	
+		{
+			//System.out.println("isMoveOk du pion.java KO");
+
+			return false;
+		}
 	}
 	
 	public boolean isMoveDiagOk(int xFinal,int yFinal){

@@ -79,23 +79,23 @@ public class ChessGameCmdLine implements Observer{
 
 	public void go() {
 		
-		System.out.print("\n Déplacement de 3,6 vers 3,4 = ");
-		chessGameControler.move(new Coord(3,6), new Coord(3, 4));	// true
+		System.out.print("\n Déplacement de 1,6 vers 1,5 = ");
+		chessGameControler.move(new Coord(1,7), new Coord(2,5));	// true
 
 
-		// dans ce cas, update non appelé et pas d'affichage 
-		// controleur empêche le move car pas le bon joueur
+//		// dans ce cas, update non appelé et pas d'affichage 
+//		// controleur empêche le move car pas le bon joueur
 		System.out.print("\n Déplacement de 3,4 vers 3,6 = ");		
-		chessGameControler.move(new Coord(3,4), new Coord(3, 3));	// false 
-
-		System.out.print("\n Déplacement de 4,1 vers 4,3 = ");
-		chessGameControler.move(new Coord(4, 1), new Coord(4, 3));	// true
-
-		System.out.print("\n Déplacement de 3,4 vers 3,4 = ");
-		chessGameControler.move(new Coord(3, 4), new Coord(3, 4));	// false
-
-		System.out.print("\n Déplacement de 3,4 vers 4,3 = ");
-		chessGameControler.move(new Coord(3, 4), new Coord(4, 3));	// true		
+		chessGameControler.move(new Coord(0,1), new Coord(0,2));	// false 
+//
+//		System.out.print("\n Déplacement de 4,1 vers 4,3 = ");
+//		chessGameControler.move(new Coord(4, 1), new Coord(4, 3));	// true
+//
+//		System.out.print("\n Déplacement de 3,4 vers 3,4 = ");
+//		chessGameControler.move(new Coord(3, 4), new Coord(3, 4));	// false
+//
+//		System.out.print("\n Déplacement de 3,4 vers 4,3 = ");
+//		chessGameControler.move(new Coord(3, 4), new Coord(4, 3));	// true		
 
 	}
 

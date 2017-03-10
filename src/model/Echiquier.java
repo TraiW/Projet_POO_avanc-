@@ -28,6 +28,7 @@ public class Echiquier implements BoardGames {
  * Permet de changer le joueur courant. 
  */
 	public void switchJoueur() {
+		System.out.println("Avant le switchJoueru : J-C "+jeuCourant+ "J-nC"+jeuNonCourant);
 		if(jeuCourant == jeuBlanc)
 		{
 			jeuCourant = jeuNoir;
@@ -38,6 +39,8 @@ public class Echiquier implements BoardGames {
 			jeuCourant = jeuBlanc;
 			jeuNonCourant = jeuNoir;
 		}
+		System.out.println("après le switchJoueur : J-C "+jeuCourant+ "J-nC"+jeuNonCourant);
+
 	}
 
 	/**
@@ -73,7 +76,17 @@ public class Echiquier implements BoardGames {
 	 */
 	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal)
 	{
+		//jeu Courant bien blanc
 		//	s'il n'existe pas de piece du jeu courant aux coordonnées initiales --> false,
+//		if(this.jeuCourant.isPieceHere(xInit, yInit)==false) //fait
+//		{
+//			System.out.println("KO : la pièce séléctionnée ne vous appartient pas !");
+//			return false;
+//			}
+//		System.out.println("x0 :"+xInit+" - y0 :"+yInit);
+//		System.out.println("xf :"+xFinal+" - yf :"+yFinal);
+
+
 		if(this.jeuCourant.isPieceHere(xInit, yInit)==false) //fait
 		{
 			System.out.println("KO : la pièce séléctionnée ne vous appartient pas !");
@@ -107,7 +120,7 @@ public class Echiquier implements BoardGames {
 		
 		else if(this.jeuCourant.getPieceType(xInit, yInit).equals("Pion"))
 		{
-			System.out.println("Pion");
+			System.out.println("Pion isMoveOk d'echiquier");
 			// return false si :
 			// avance droit + pièce à l'arrivée
 			// avance en diag. et PAS de pièce à l'arrivée
@@ -116,25 +129,6 @@ public class Echiquier implements BoardGames {
 			//on peut avancer tout droit sans présence de piece
 			// ou en diago si piece adverse présente sauf si c'est roi
 
-			
-			if(this.jeuCourant.couleur==this.jeuBlanc.couleur) //jeu blanc
-			{
-
-				if((yFinal!=yInit-1 && xFinal !=xInit) || yFinal!=yInit-2 ) //verifie qu'on avance bien droit et dans la bonne direction
-				{
-
-					return false;
-				}
-			}
-			else//jeux noir
-			{
-
-				if((yFinal!=yInit+1 && xFinal !=xInit ) || yFinal!=yInit+2 )
-				{
-					return false;
-				}
-			}
-			//pas de piece adverse à l'azrrivé donc de l'autre couleur osus entendu
 			if(this.jeuNonCourant.isPieceHere(xFinal, yFinal)==false) // PAS de pièce à l'arrivée
 			{
 
@@ -181,9 +175,39 @@ public class Echiquier implements BoardGames {
 				}
 			
 			}
-			System.out.println("OK : déplacement simple_0");
+			if(this.jeuCourant.couleur==this.jeuBlanc.couleur) //jeu blanc
+			{
+				System.out.println("check Couleur : Blanc _ isMoveOk d'echiquier");
+				if(yFinal==yInit-1 || yFinal==yInit-2) //verifie qu'on avance bien droit et dans la bonne direction
+				{
+					//System.out.println("Le pion blanc va en haut donc OK");
 
-			return true;
+					return true;
+				}
+				else
+				{
+					//System.out.println("Le pion blanc va en bas donc KO");
+					return false;
+				}
+			}
+			else//jeux noir
+			{
+				if(yFinal==yInit+1 || yFinal==yInit+2) //verifie qu'on avance bien droit et dans la bonne direction
+				{
+					//System.out.println("Le pion noir va en haut donc OK");
+
+					return true;
+				}
+				else
+				{
+					//System.out.println("Le pion noir va en bas donc KO");
+					return false;
+				}
+			}
+			//pas de piece adverse à l'azrrivé donc de l'autre couleur osus entendu
+			
+			//System.out.println("OK : déplacement simple_0");
+
 
 		}
 		
@@ -213,11 +237,13 @@ public class Echiquier implements BoardGames {
   */
 	@Override
 	public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
+		//System.out.println("x :"+xInit+" - y :"+yInit);
 		if(this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal) == true)
 		{
 			if(this.jeuCourant.move(xInit, yInit, xFinal, yFinal) == true)
 			{
 				// getPiecesIHM();
+				//switchJoueur();
 				return true;
 			}
 				

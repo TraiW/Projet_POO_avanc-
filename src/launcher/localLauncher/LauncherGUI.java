@@ -33,8 +33,8 @@ public class LauncherGUI {
 		Dimension dim1;
 
 	
-		dim = new Dimension(700, 700);
-		dim1 = new Dimension(710,730);
+		dim = new Dimension(800, 800); // dimension divisible par 8 please (8cases)
+		dim1 = new Dimension(810,830);
 		chessGame = new ChessGame();	
 		chessGameControler = new ChessGameControler(chessGame);
 		

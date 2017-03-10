@@ -24,7 +24,18 @@ public class ChessGameControler extends AbstractChessGameControler {
 	public ChessGameControler(ChessGame chessGame) {
 		super(chessGame);
 	}
+	
+	
+	
+	protected Couleur getColorCurrentPlayer(){	
+		System.out.println("lol");
+		return this.chessGame.getColorCurrentPlayer();		
+	}	
 
+	protected Couleur getPieceColor(Coord initCoord){		
+		return this.chessGame.getPieceColor(initCoord.x, initCoord.y);		
+	}	
+	
 	/* (non-Javadoc)
 	 * @see controler.AbstractChessGameControler#isPlayerOK(model.Coord)
 	 * 
@@ -34,34 +45,30 @@ public class ChessGameControler extends AbstractChessGameControler {
 	 */
 	@Override
 	public boolean isPlayerOK(Coord initCoord) {
-		System.out.println("isPlayerOK_0");
 
-		int x=initCoord.x;
-		int y=initCoord.y;
-
-		
-		if (chessGame.getColorCurrentPlayer()==chessGame.getPieceColor(x,y))
-		{
-			System.out.println("isPlayerOK_vrai");
-
-			return true;
-		}
-		else
-		{
-			System.out.println("isPlayerOK_false");
-
-			return false;
-		}
+//		int x=initCoord.x;
+//		int y=initCoord.y;
+//
+//		
+//		if (chessGame.getColorCurrentPlayer()==chessGame.getPieceColor(x,y))
+//		{
+//			System.out.println("Bon joueur\n");
+//			System.out.println("Couleur jeu courant : "+chessGame.getColorCurrentPlayer()+ " Couleur des pièces en cours : "+chessGame.getPieceColor(x,y));
+//
+//			return true;
+//		}
+//		else
+//		{
+//			System.out.println("Mauvais joueur\n");
+//			System.out.println("Couleur jeu courant : "+chessGame.getColorCurrentPlayer()+ " Couleur des pièces en cours : "+chessGame.getPieceColor(x,y));
+//
+//
+//			return false;
+//		}
+		return true;
 	}
 	
-//	protected Couleur getColorCurrentPlayer(){		
-//		return this.chessGame.getColorCurrentPlayer();		
-//	}	
-//
-//	protected Couleur getPieceColor(Coord initCoord){		
-//		return this.chessGame.getPieceColor(initCoord.x, initCoord.y);		
-//	}	
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -60,10 +60,10 @@ public class ChessGame extends Observable implements BoardGames{
 
 		ret = echiquier.isMoveOk(xInit, yInit, xFinal, yFinal);
 		if (ret){
-			System.out.println("mouvement (chessGame.java dans model.observable)");
+			//System.out.println("mouvement (chessGame.java dans model.observable)");
 			ret = echiquier.move(xInit, yInit, xFinal, yFinal);
-			System.out.println("ancienne : "+xInit+"/"+yInit+" Nouvelle : "+xFinal+"/"+yFinal+"\n");
-			System.out.println("resultat : " + ret);
+			//System.out.println("ancienne : "+xInit+"/"+yInit+" Nouvelle : "+xFinal+"/"+yFinal+"\n");
+			//System.out.println("resultat : " + ret);
 		}
 		if (ret){
 			echiquier.switchJoueur();

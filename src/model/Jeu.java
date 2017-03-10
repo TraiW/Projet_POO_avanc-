@@ -59,9 +59,10 @@ public class Jeu {
 	{
 		
 		for(Pieces p :pieces)
-		{
+		{  
 			if(p.getX()==x && p.getY()==y)
 			{
+
 				return true;
 	
 			}
@@ -80,21 +81,27 @@ public class Jeu {
 	 */
 	public boolean isMoveOk(int xInit,int yInit,int xFinal,int yFinal)
 	{
+//		System.out.println("xInit : "+xInit+" - yInit : "+yInit+"|||||| xF : "+xFinal+" - yF : "+yFinal);
+		
 		Pieces p=null;
 		if(isPieceHere(xInit,yInit)==true)
 		{
 			p=findPiece(xInit,yInit);
 			if(p.isMoveOk(xFinal, yFinal)==true)
-			{
+			{			
+
 				return true;
 			}
 			else
-			{
+			{			
+
 				return false;
 			}
 		}
 		else 
 		{
+			
+
 			return false;
 		}
 		
@@ -181,6 +188,7 @@ public class Jeu {
 		{
 			p=findPiece(x,y);
 			nomPiece=p.getClass().getSimpleName();
+			System.out.println(" nom de la piece : "+nomPiece);
 		}
 		return nomPiece;
 	}
