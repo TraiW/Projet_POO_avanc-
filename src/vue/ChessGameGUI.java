@@ -33,6 +33,7 @@ int xAdjustment;
 int yAdjustment;
 Dimension boardSize;
 ChessGameControlers chessGameControler;
+Coord cInit=new Coord(xAdjustment, xAdjustment);
 
 /**
  * @param string
@@ -40,10 +41,9 @@ ChessGameControlers chessGameControler;
  * @param dim
  */
 public ChessGameGUI(String string, ChessGameControlers chessGameControler, Dimension dim) {
-		
 	boardSize = dim;
 	
-	chessGameControler=this.chessGameControler;
+	this.chessGameControler=chessGameControler;
 	
 	layeredPane = new JLayeredPane();
 	 	
@@ -95,8 +95,9 @@ public void update(Observable arg0, Object arg1) {
 		  panel = (JPanel) chessBoard.getComponent(c.x + c.y *8);
 		  panel.removeAll();
 		  panel.add(piece);
+		  
 	  
-		  System.out.println(c.x * 8 + c.y + " => " + panel.getBackground());
+		 // System.out.println(c.x * 8 + c.y + " => " + panel.getBackground());
 		 }
 	  }
 	
@@ -120,25 +121,44 @@ public void mousePressed(MouseEvent e){
 	  chessPiece.setLocation(e.getX() + xAdjustment, e.getY() + yAdjustment);
 	  chessPiece.setSize(chessPiece.getWidth(), chessPiece.getHeight());
 	  layeredPane.add(chessPiece, JLayeredPane.DRAG_LAYER);
+//	  System.out.println("coord init2 dep : x= "+c.getX()/100+"y= "+c.getY()/100); // pour recup les coord de départ
+	  cInit.x = c.getX()/100;
+  cInit.y=c.getY()/100;
 	  
 }
 		 
 		  //Move the chess piece around
 		  
 public void mouseDragged(MouseEvent me) {
+	
 	  if (chessPiece == null) return;
 	  	chessPiece.setLocation(me.getX() + xAdjustment, me.getY() + yAdjustment);
 	 }
 	 
 	  //Drop the chess piece back onto the chess board
+
+
+
 	 
 public void mouseReleased(MouseEvent e) {
+	
+	  Coord cfinal=new Coord(xAdjustment, xAdjustment);
+
 	  if(chessPiece == null) 
 		  return;
 	 
 	  chessPiece.setVisible(false);
-	  Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
-	 
+	  Component c =  chessBoard.findComponentAt(e.getX(), e.getY()); 
+	  
+
+	//	 System.out.println("test released :"+c.getX()/100+" /"+c.getY()/100);// pour recup les coord d'arrivée
+	  cfinal.x=c.getX()/100;
+	  cfinal.y=c.getY()/100;
+	  
+	  if(chessGameControler.move(cInit, cfinal)==false)
+	  {
+		  return;
+	  }
 	  if (c instanceof JLabel){
 		  Container parent = c.getParent();
 		  parent.remove(0);
