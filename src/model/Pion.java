@@ -2,10 +2,22 @@ package model;
 
 public class Pion extends AbstractPiece implements Pions{
 	
+	/**
+	 * @param couleur_de_piece
+	 * @param coord
+	 */
 	public Pion(Couleur couleur_de_piece, Coord coord){
 		super(couleur_de_piece, coord);
 	}
-	
+
+/** Résumé
+ * Valide les déplacements en avant d'une case et deux cases
+ * mais ne vérifie pas s'il y a une piece sur le chemin
+ * @param xFinal colonne
+ * @param yFinal ligne
+ * @return true si le mouvement est validé 
+ * 
+ */
 	public boolean isMoveOk(int xFinal,int yFinal){
 		
 		if(coord.y ==1 || coord.y == 6)

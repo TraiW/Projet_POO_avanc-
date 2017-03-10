@@ -13,6 +13,9 @@ import controler.controlerLocal.ChessGameControler;
  */
 public class LauncherCmdLine {
 	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {		
 		
 		ChessGame model;

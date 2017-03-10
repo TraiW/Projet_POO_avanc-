@@ -29,12 +29,20 @@ public enum ChessPiecePos {
 	public Couleur couleur;
 	public  Coord[] coords = new Coord[8] ;   
 
+	/**
+	 * @param nom
+	 * @param couleur
+	 * @param coords
+	 */
 	ChessPiecePos( String nom, Couleur couleur, Coord[] coords) { 
 		this.nom = nom;this.couleur = couleur;
 		this.coords = coords;
 	} 
 
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		for (int i = 0; i < ChessPiecePos.values().length; i++) {
 			System.out.print(ChessPiecePos.values()[i].name() + " \t"); 

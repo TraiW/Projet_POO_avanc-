@@ -7,10 +7,14 @@ import tools.ChessPiecesFactory;
 
 public class Jeu {
 	
+	
 	public List<Pieces> pieces = null;
 	public boolean CapturePossible=false;
 	Couleur couleur;
 	
+	/**
+	 * @param couleur
+	 */
 	public Jeu(Couleur couleur)
 	{
 		this.couleur=couleur;
@@ -24,6 +28,11 @@ public class Jeu {
 		return "Jeu :\n [pieces=\n" + pieces + "]";
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @return true si une pièce se trouve aux coordonnées indiquées
+	 */
 	private Pieces findPiece(int x, int y)
 	{
 		Pieces fausse=null;
@@ -41,6 +50,11 @@ public class Jeu {
 		return fausse;//sert a rien on l'appelle qu'apres isPieceHere mais au cas ou
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @return true si une pièce se trouve aux coordonnées indiquées
+	 */
 	public boolean isPieceHere(int x,int y)
 	{
 		
@@ -57,6 +71,13 @@ public class Jeu {
 
 	}
 	
+	/**
+	 * @param xInit
+	 * @param yInit
+	 * @param xFinal
+	 * @param yFinal
+	 * @return true si piece du jeu peut être déplacée aux coordonnées finales, false sinon
+	 */
 	public boolean isMoveOk(int xInit,int yInit,int xFinal,int yFinal)
 	{
 		Pieces p=null;
@@ -79,6 +100,11 @@ public class Jeu {
 		
 		
 	}
+	/**
+	 * @param x
+	 * @param y
+	 * @return couleur de la pièce aux coordonnées x, y
+	 */
 	public Couleur getPieceColor(int x,int y)
 	{
 		Pieces p;
@@ -96,6 +122,11 @@ public class Jeu {
 		}
 		return retour;
 	}
+	/**
+	 * @param xFinal
+	 * @param yFinal
+	 * @return true si on est bien dans le cas d'une promotion du pion
+	 */
 	public boolean isPawnPromotion(int xFinal,int yFinal)
 	{
 		if(this.getPieceColor(xFinal,yFinal)==Couleur.BLANC)
@@ -104,6 +135,13 @@ public class Jeu {
 		}
 		return true;
 	}
+	/**
+	 * @param xInit
+	 * @param yInit
+	 * @param xFinal
+	 * @param yFinal
+	 * @return true si déplacement pièce effectué
+	 */
 	public boolean move(int xInit,int yInit,int xFinal,int yFinal)
 	{
 		Pieces p=null;
@@ -128,8 +166,13 @@ public class Jeu {
 		
 	}
 	
-//test ordi val
+
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @return type de la pièce aux coordonnées x,y c'est à dire le nom de la classe : maPiece.getClass().getSimpleName();
+	 */
 	public String getPieceType(int x,int y)
 	{
 		Pieces p=null;
@@ -144,6 +187,9 @@ public class Jeu {
 	
 
 
+	/**
+	 * @return true si promotion OK
+	 */
 	public Coord getKingCoord()
 	{
 		Coord retour = new Coord(-1,-1);
@@ -194,6 +240,9 @@ public class Jeu {
 			}
 		return list;
 	}
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 	
 		Jeu J1= new Jeu(Couleur.BLANC);

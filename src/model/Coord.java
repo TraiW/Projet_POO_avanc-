@@ -9,6 +9,9 @@ import java.io.Serializable;
  */
 public class Coord implements Serializable {
 	
+	/**
+	 * 
+	 */
 	public int x, y;
 	
 	/**

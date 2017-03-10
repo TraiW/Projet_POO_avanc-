@@ -6,11 +6,16 @@ import java.util.List;
 public class Echiquier implements BoardGames {
 
 
+	/**
+	 * 
+	 */
 	Jeu jeuBlanc;
 	Jeu jeuNoir;
 	Jeu jeuCourant;
 	Jeu jeuNonCourant;
 	
+		
+
 		public Echiquier ()
 		{
 			this.jeuBlanc= new Jeu(Couleur.BLANC);
@@ -18,7 +23,10 @@ public class Echiquier implements BoardGames {
 			this.jeuCourant = jeuBlanc;
 			this.jeuNonCourant = jeuNoir;
 		}
-	
+		
+/**
+ * Permet de changer le joueur courant. 
+ */
 	public void switchJoueur() {
 		if(jeuCourant == jeuBlanc)
 		{
@@ -32,6 +40,10 @@ public class Echiquier implements BoardGames {
 		}
 	}
 
+	/**
+	 *
+	 * @return     une liste de PieceIHM qui pourra être exploitée par une IHM
+	 */
 	public java.util.List<PieceIHM> getPiecesIHM(){
         List<PieceIHM> list = new LinkedList<PieceIHM>();
         list.addAll(this.jeuCourant.getPiecesIHM());
@@ -40,6 +52,25 @@ public class Echiquier implements BoardGames {
         return list;
     }
 	
+	/**
+	 *Permet de vérifier si une piéce peut être déplacée.
+	 *L'algo est le suivant :
+	 *s'il n'existe pas de piece du jeu courant aux coordonnées initiales --> false,
+	 *si les coordonnées finales ne sont pas valides ou égales aux initiales --> false,
+	 *si position finale ne correspond pas à algo de déplacement piece --> false,
+	 *s'il existe une piéce intermédiaire sur la trajectoire --> false (sauf cavalier),
+	 *s'il existe une piéce positionnées aux coordonnées finales :
+	 *si elle est de la méme couleur --> false ou tentative roque du roi,
+	 *sinon : prendre la piéce intermédiaire (vigilance pour le cas du pion) et déplacer la piéce -->true,
+	 *sinon déplacer la piéce -->true
+	 *
+	 *
+	 * @param xInit
+	 * @param yInit
+	 * @param xFinal
+	 * @param yFinal
+	 * @return true si le déplacement est effectué, false sinon
+	 */
 	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal)
 	{
 		//	s'il n'existe pas de piece du jeu courant aux coordonnées initiales --> false,
@@ -174,7 +205,12 @@ public class Echiquier implements BoardGames {
 		System.out.println("OK : déplacement simple");
 		return true;		
 	}
-
+	
+	
+ /**
+  * @param xInit, yInit, xFinal, yFinal
+  * @return true si le déplacement est effectué, false sinon
+  */
 	@Override
 	public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
 		if(this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal) == true)
@@ -218,6 +254,9 @@ public class Echiquier implements BoardGames {
 				+ jeuNonCourant + "]";
 	}
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Echiquier echec = new Echiquier();
 		System.out.println(echec);

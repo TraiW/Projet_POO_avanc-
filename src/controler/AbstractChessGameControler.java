@@ -3,7 +3,6 @@ package controler;
 import model.Coord;
 import model.Couleur;
 import model.observable.ChessGame;
-//lol
 
 /**
  * @author francoise.perrin
@@ -19,8 +18,14 @@ import model.observable.ChessGame;
  */
 public abstract class AbstractChessGameControler implements ChessGameControlers {
 
+	/**
+	 * 
+	 */
 	protected ChessGame chessGame;	 
 
+	/**
+	 * @param chessGame
+	 */
 	public AbstractChessGameControler(ChessGame chessGame) {
 		super();
 		this.chessGame = chessGame;	 
@@ -64,10 +69,20 @@ public abstract class AbstractChessGameControler implements ChessGameControlers 
 	public abstract boolean isPlayerOK(Coord initCoord) ;
 
 	// Déplacement métier
+	/**
+	 * @param initCoord
+	 * @param finalCoord
+	 * @return
+	 */
 	protected  boolean moveModel(Coord initCoord, Coord finalCoord)  {	
 		return chessGame.move(initCoord.x, initCoord.y, finalCoord.x, finalCoord.y);	
 	}
 
+	/**
+	 * @param initCoord
+	 * @param finalCoord
+	 * @param promotionType
+	 */
 	protected abstract void endMove(Coord initCoord, Coord finalCoord, String promotionType) ;
 
 
@@ -86,10 +101,17 @@ public abstract class AbstractChessGameControler implements ChessGameControlers 
 	}
 
 	
+	/**
+	 * @return
+	 */
 	protected Couleur getColorCurrentPlayer(){		
 		return this.chessGame.getColorCurrentPlayer();		
 	}	
 
+	/**
+	 * @param initCoord
+	 * @return
+	 */
 	protected Couleur getPieceColor(Coord initCoord){		
 		return this.chessGame.getPieceColor(initCoord.x, initCoord.y);		
 	}	

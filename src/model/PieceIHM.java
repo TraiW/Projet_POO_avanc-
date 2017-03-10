@@ -15,12 +15,19 @@ public  class PieceIHM {
 	Couleur couleur;
 	List<Coord> list;
 	
+	/**
+	 * @param type
+	 * @param couleur
+	 */
 	PieceIHM(String type, Couleur couleur) {
 		this.type = type;
 		this.couleur = couleur;
 		list = new LinkedList<Coord>();
 	}
 	
+	/**
+	 * @param coord
+	 */
 	public void add(Coord coord){
 		list.add(coord);
 	}

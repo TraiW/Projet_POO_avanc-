@@ -34,6 +34,11 @@ int yAdjustment;
 Dimension boardSize;
 ChessGameControlers chessGameControler;
 
+/**
+ * @param string
+ * @param chessGameControler
+ * @param dim
+ */
 public ChessGameGUI(String string, ChessGameControlers chessGameControler, Dimension dim) {
 		
 	boardSize = dim;

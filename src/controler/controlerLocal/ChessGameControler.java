@@ -14,7 +14,13 @@ import model.AbstractPiece;
  */
 public class ChessGameControler extends AbstractChessGameControler {
 	
+	/**
+	 * 
+	 */
 	public Pieces p=null;
+	/**
+	 * @param chessGame
+	 */
 	public ChessGameControler(ChessGame chessGame) {
 		super(chessGame);
 	}

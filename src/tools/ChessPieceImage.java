@@ -27,12 +27,19 @@ public enum ChessPieceImage {
 	public String nom;
 	public  String imageFile ;   
 
+	/**
+	 * @param nom
+	 * @param imageFile
+	 */
 	ChessPieceImage(String nom,  String imageFile) { 
 		this.nom = nom;
 		this.imageFile = imageFile;
 	} 
 
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		for (int i = 0; i < ChessPieceImage.values().length; i++) {
 			System.out.print(ChessPieceImage.values()[i].nom + " \t"); 
