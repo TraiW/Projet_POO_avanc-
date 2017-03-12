@@ -120,61 +120,65 @@ public class Echiquier implements BoardGames {
 		
 		else if(this.jeuCourant.getPieceType(xInit, yInit).equals("Pion"))
 		{
-			System.out.println("Pion isMoveOk d'echiquier");
-			// return false si :
-			// avance droit + pièce à l'arrivée
-			// avance en diag. et PAS de pièce à l'arrivée
-			
-			//renvoi true si:
-			//on peut avancer tout droit sans présence de piece
-			// ou en diago si piece adverse présente sauf si c'est roi
-
-			if(this.jeuNonCourant.isPieceHere(xFinal, yFinal)==false) // PAS de pièce à l'arrivée
-			{
-
-				// et avance en diag
-				if(this.jeuCourant.couleur==this.jeuBlanc.couleur){ // blancs => Y descendant
-
-					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))
-					{
-						System.out.println("isMoveOk_0");
-
-						return false;
-					}	
-
-				} 
-				else { //noirs => monte
-					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))	
-					{
-						System.out.println("isMoveOk_1");
-
-						return false;
-					}
-						
+				System.out.println("Pion isMoveOk d'echiquier");
+				// return false si :
+				// avance droit + pièce à l'arrivée
+				// avance en diag. et PAS de pièce à l'arrivée
+				
+				//renvoi true si:
+				//on peut avancer tout droit sans présence de piece
+				// ou en diago si piece adverse présente sauf si c'est roi
+	
+				if(this.jeuNonCourant.isPieceHere(xFinal, yFinal)==false) // PAS de pièce à l'arrivée
+				{
+	
+					// et avance en diag
+						if(this.jeuCourant.couleur==this.jeuBlanc.couleur)
+						{ // blancs => Y descendant
+		
+							if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))
+							{
+								System.out.println("isMoveOk_0");
+		
+								return false;
+							}	
+		
+						} 
+						else 
+						{ //noirs => monte
+							if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))	
+							{
+								System.out.println("isMoveOk_1");
+		
+								return false;
+							}
+								
+						}
 				}
-			}
-			else
-			{
-
-				if(this.jeuCourant.couleur==this.jeuBlanc.couleur)
-				{ 
-					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))
-					{
-						//capture
-						return false;
-					}					
-				} 
-				else 
-				{ 
-					if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))	
-					{
-						//capture
-						return false;
-
-					}
+			else //CAS OU IL Y A UNE PIECE du JEU ADVERSE EN DIAGO(TJR POUR LE PION)
+				{
+		
+						if(this.jeuCourant.couleur==this.jeuBlanc.couleur)//blanc
+						{ 
+							if((yFinal==yInit-1) && this.jeuNonCourant.getPieceType(xFinal, yFinal)!="Roi" )//pièce noir à l'arrivé //ATTENTION, VERIFIER QUE CE N'EST PAS LE ROI
+							{
+								System.out.println("Roi ou tentative de deplacement vers le bas (alors que tu as un jeu blanc)");
+								return true;
+							}
+							return false;
+						} 
+						else //pour les noirs
+						{ 
+							if((yFinal==yInit+1) && this.jeuNonCourant.getPieceType(xFinal, yFinal)!="Roi" )//pièce noir à l'arrivé //ATTENTION, VERIFIER QUE CE N'EST PAS LE ROI
+							{
+								System.out.println("Roi ou tentative de deplacement vers le haut (alors que tu as un jeu noir)");
+								return true;
+							}
+							return false;
+						}
+					
 				}
-			
-			}
+
 			if(this.jeuCourant.couleur==this.jeuBlanc.couleur) //jeu blanc
 			{
 				System.out.println("check Couleur : Blanc _ isMoveOk d'echiquier");
@@ -204,23 +208,26 @@ public class Echiquier implements BoardGames {
 					return false;
 				}
 			}
+		}
 			//pas de piece adverse à l'azrrivé donc de l'autre couleur osus entendu
 			
 			//System.out.println("OK : déplacement simple_0");
+			//capture de pion
+		
 
-
-		}
 		
+		//FIN PION
 		
-		
-		 if(this. jeuNonCourant.isPieceHere(xFinal, yFinal)){
 			
-			// prendre la pièce intermédiaire (vigilance pour le cas du pion) et déplacer la pièce -->true,
-				//this. jeuNonCourant.setPossibleCapture();
+			 if(this. jeuNonCourant.isPieceHere(xFinal, yFinal))
+			 {
 				
-				System.out.println("Capture");
-				return true;
-		}
+				// prendre la pièce intermédiaire (vigilance pour le cas du pion) et déplacer la pièce -->true,
+					//this. jeuNonCourant.setPossibleCapture();
+					
+					System.out.println("Capture");
+					return true;
+			}
 		//		s'il existe une pièce positionnées aux coordonnées finales :
 		//si elle est de la même couleur --> false ou tentative roque du roi,
 		 

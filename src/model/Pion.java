@@ -56,10 +56,23 @@ public class Pion extends AbstractPiece implements Pions{
 	}
 	
 	public boolean isMoveDiagOk(int xFinal,int yFinal){
-		if(Math.abs(coord.x - xFinal) == Math.abs(coord.y - yFinal))
-			return true; //Gérer qu'il y a bien un pion adverse
-		else 
-			return false;
+//		if(Math.abs(coord.x - xFinal) == Math.abs(coord.y - yFinal))
+//			return true; //Gérer qu'il y a bien un pion adverse
+//		else 
+//			return false;
+		boolean bool=false;
+		int deltax = xFinal-this.getX();
+		int deltay = yFinal-this.getY();
+		//On verifiera les couleurs dans echiquier ;):
+		if( deltax*deltay==1)
+			{
+				bool=true;
+			}
+		else
+			{
+				bool=false;
+			}
+		return bool;
 	}
 	
 //	public boolean move(int x,int y){

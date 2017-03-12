@@ -214,6 +214,10 @@ public class Jeu {
 		System.out.println("Problème fct Coord getKingCoord() dans Jeu");
 		return retour;
 	}
+	public boolean capture(int xCatch,int yCatch)
+	{
+		return true;
+	}
 	/**
 	* @return une vue de la liste des pièces en cours
 	* ne donnant que des accès en lecture sur des PieceIHM
