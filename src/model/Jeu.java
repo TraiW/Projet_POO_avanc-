@@ -57,18 +57,21 @@ public class Jeu {
 	 */
 	public boolean isPieceHere(int x,int y)
 	{
+		boolean bool = false;
 		
 		for(Pieces p :pieces)
 		{  
 			if(p.getX()==x && p.getY()==y)
 			{
 
-				return true;
+				bool = true;
 	
 			}
 			
 		}
-		return false;
+		bool = false;
+		
+	return bool;	
 
 	}
 	
@@ -81,6 +84,7 @@ public class Jeu {
 	 */
 	public boolean isMoveOk(int xInit,int yInit,int xFinal,int yFinal)
 	{
+		boolean bool = false;
 //		System.out.println("xInit : "+xInit+" - yInit : "+yInit+"|||||| xF : "+xFinal+" - yF : "+yFinal);
 		
 		Pieces p=null;
@@ -90,22 +94,22 @@ public class Jeu {
 			if(p.isMoveOk(xFinal, yFinal)==true)
 			{			
 
-				return true;
+				bool = true;
 			}
 			else
 			{			
 
-				return false;
+				bool = false;
 			}
 		}
 		else 
 		{
 			
 
-			return false;
+			bool = false;
 		}
 		
-		
+	return bool;
 	}
 	/**
 	 * @param x
@@ -151,6 +155,7 @@ public class Jeu {
 	 */
 	public boolean move(int xInit,int yInit,int xFinal,int yFinal)
 	{
+		boolean bool = false;
 		Pieces p=null;
 		if(isPieceHere(xInit,yInit)==true)
 		{
@@ -159,18 +164,19 @@ public class Jeu {
 			if(isMoveOk(xInit,yInit, xFinal, yFinal)==true)
 			{
 				p.move(xFinal,yFinal);
-				return true;
+				bool = true;
 			}
 			else
 			{
-				return false;
+				bool = false;
 			}
 		}
 		else
 		{
-			return false;
+			bool = false;
 		}
 		
+	return bool;
 	}
 	
 

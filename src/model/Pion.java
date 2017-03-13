@@ -19,6 +19,7 @@ public class Pion extends AbstractPiece implements Pions{
  * 
  */
 	public boolean isMoveOk(int xFinal,int yFinal){
+		boolean bool = false;
 
 		if(coord.y ==1 || coord.y == 6)
 		{
@@ -29,7 +30,7 @@ public class Pion extends AbstractPiece implements Pions{
 				if(yFinal==coord.y + 2)
 				{
 					System.out.println("true pion.java");
-					return true;
+					bool = true;
 				}
 			
 			}
@@ -37,7 +38,7 @@ public class Pion extends AbstractPiece implements Pions{
 			{
 				if(yFinal==coord.y - 2)
 				{
-					return true;
+					bool = true;
 				}
 			}	
 		}
@@ -45,14 +46,16 @@ public class Pion extends AbstractPiece implements Pions{
 		if(yFinal==coord.y + 1   || yFinal == coord.y -1 ) //Gérer le premier deplacement
 		{
 			//System.out.println("isMoveOk du pion.java OK");
-			return true;
+			bool = true;
 		}
 		else 
 		{
 			//System.out.println("isMoveOk du pion.java KO");
 
-			return false;
+			bool = false;
 		}
+		
+	return bool;
 	}
 	
 	public boolean isMoveDiagOk(int xFinal,int yFinal){

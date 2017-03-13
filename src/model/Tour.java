@@ -21,10 +21,12 @@ public class Tour extends AbstractPiece {
  */
 	
 	public boolean isMoveOk(int xFinal,int yFinal){
-		
+		boolean bool = false;
 		if(coord.x == xFinal  || coord.y == yFinal  )
-			return true;
+			bool = true;
 		else 
-			return false;		
+			bool = false;	
+	
+	return bool;
 	}
 }

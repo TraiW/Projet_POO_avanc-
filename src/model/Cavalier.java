@@ -24,7 +24,7 @@ public class Cavalier extends AbstractPiece{
 	 * 
 	 */
 	public boolean isMoveOk(int xFinal, int yFinal){
-		
+		boolean bool = false;
 		if(coord.x + 2 == xFinal && coord.y + 1 == yFinal 
 				|| coord.y + 2 == yFinal && coord.x +1 == xFinal
 				|| coord.x - 2 == xFinal && coord.y - 1 == yFinal 
@@ -34,9 +34,10 @@ public class Cavalier extends AbstractPiece{
 				|| coord.x - 2 == xFinal && coord.y + 1 == yFinal 
 				|| coord.y - 2 == yFinal && coord.x + 1 == xFinal)// A mettre mieux
 			
-			return true;
+			bool = true;
 		else 
-			return false;
+			bool = false;
+		return bool;
 	}
 
 }
