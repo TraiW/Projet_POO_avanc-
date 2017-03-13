@@ -57,21 +57,19 @@ public class Jeu {
 	 */
 	public boolean isPieceHere(int x,int y)
 	{
-		boolean bool = false;
 		
 		for(Pieces p :pieces)
 		{  
 			if(p.getX()==x && p.getY()==y)
 			{
-
-				bool = true;
+				System.out.println("isPieceHere du jeu.java OK");
+				return true;
 	
 			}
 			
 		}
-		bool = false;
-		
-	return bool;	
+		System.out.println("isPieceHere du jeu.java KO");
+		return false;	
 
 	}
 	
@@ -109,7 +107,7 @@ public class Jeu {
 			bool = false;
 		}
 		
-	return bool;
+		return bool;
 	}
 	/**
 	 * @param x

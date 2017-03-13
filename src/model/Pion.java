@@ -20,7 +20,6 @@ public class Pion extends AbstractPiece implements Pions{
  */
 	public boolean isMoveOk(int xFinal,int yFinal){
 		boolean bool = false;
-
 		if(coord.y ==1 || coord.y == 6)
 		{
 //			System.out.println("1");
@@ -29,7 +28,7 @@ public class Pion extends AbstractPiece implements Pions{
 			{
 				if(yFinal==coord.y + 2)
 				{
-					System.out.println("true pion.java");
+					//System.out.println("true pion.java");
 					bool = true;
 				}
 			
@@ -38,6 +37,7 @@ public class Pion extends AbstractPiece implements Pions{
 			{
 				if(yFinal==coord.y - 2)
 				{
+					//System.out.println("isMoveOk 2 du pion.java OK");
 					bool = true;
 				}
 			}	
@@ -48,14 +48,13 @@ public class Pion extends AbstractPiece implements Pions{
 			//System.out.println("isMoveOk du pion.java OK");
 			bool = true;
 		}
-		else 
+		/*else 
 		{
-			//System.out.println("isMoveOk du pion.java KO");
+			System.out.println("isMoveOk du pion.java KO");
 
 			bool = false;
-		}
-		
-	return bool;
+		} car si avance de 2 cases -> vrai mais le else met faux */
+		return bool;
 	}
 	
 	public boolean isMoveDiagOk(int xFinal,int yFinal){

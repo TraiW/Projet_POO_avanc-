@@ -37,6 +37,7 @@ public class Cavalier extends AbstractPiece{
 			bool = true;
 		else 
 			bool = false;
+		
 		return bool;
 	}
 

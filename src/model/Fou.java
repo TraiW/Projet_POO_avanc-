@@ -19,12 +19,12 @@ public class Fou extends AbstractPiece {
  * 
  */
 public boolean isMoveOk(int xFinal,int yFinal){
-		boolean bool = false;
+	boolean bool = false;
 		if(Math.abs(coord.x - xFinal) == Math.abs(coord.y - yFinal))
 			bool = true;
 		else 
 			bool = false;
-	
-	return bool;
+		return bool;
 	}
+
 }
