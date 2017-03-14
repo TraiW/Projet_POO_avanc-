@@ -54,6 +54,21 @@ public class Pion extends AbstractPiece implements Pions{
 
 			bool = false;
 		} car si avance de 2 cases -> vrai mais le else met faux */
+		if((xFinal==coord.x+1 || xFinal==coord.x-1) && (yFinal==coord.y+1 || yFinal==coord.y-1))
+		{
+			if(isMoveDiagOk(xFinal,yFinal)==true)
+			{
+				bool=true;
+			}
+			else
+			{
+				bool=false;
+			}
+		}
+		
+		
+		
+		
 		return bool;
 	}
 	
