@@ -59,6 +59,11 @@ public abstract class AbstractPiece implements Pieces{
  * @return true si le deplacement est effectué
  */
 	public boolean move(int xFinal, int yFinal){
+		boolean bool;
+		if(xFinal==-1 && yFinal==1)
+		{
+			return true;
+		}
 		
 		if(isMoveOk(xFinal,yFinal)==true)
 		{
