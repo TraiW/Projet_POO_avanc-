@@ -1,8 +1,8 @@
 package model;
 
 /**
- * Résumé Creation pion avec couleur et coordonnées Valide le
- * déplacement de base du pion
+ * Rï¿½sumï¿½ Creation pion avec couleur et coordonnï¿½es Valide le
+ * dï¿½placement de base du pion
  *
  */
 public class Pion extends AbstractPiece implements Pions {
@@ -58,16 +58,29 @@ public class Pion extends AbstractPiece implements Pions {
 		return bool;
 	}
 
-	public boolean isMoveDiagOk(int xFinal, int yFinal) {
-		boolean bool = false;
-		int deltax = xFinal - this.getX();
-		int deltay = yFinal - this.getY();
-		if (deltax * deltay == 1) {
-			bool = true;
-		} 
-		else {
-			bool = false;
+	public boolean isMoveDiagOk(int xFinal,int yFinal){
+		
+		boolean bool=false;
+		int deltax = xFinal-this.getX();
+		int deltay = yFinal-this.getY();
+		//On verifiera les couleurs dans echiquier ;):
+//		System.out.println("xFinal : "+xFinal+" - xInit : "+this.getX()+"- yFinal : "+yFinal+" - yInit : "+this.getY()+"\n");
+//		System.out.println("Deltax : "+deltax+" - Deltay :"+deltay+"\n");
+		if(Math.abs(deltax*deltay)==1 )
+		{
+
+			bool=true;
+		}
+		else
+		{
+
+			bool=false;
 		}
 		return bool;
 	}
+	
+	//	public boolean move(int x,int y){
+	//		return true;
+	//	}
+	
 }

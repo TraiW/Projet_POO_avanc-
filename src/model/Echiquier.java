@@ -2,7 +2,7 @@ package model;
 
 import java.util.LinkedList;
 /**
- * Gère les paramètres de l'échiquier, le changement de joueur, le mouvement légal des pièces
+ * Gï¿½re les paramï¿½tres de l'ï¿½chiquier, le changement de joueur, le mouvement lï¿½gal des piï¿½ces
  */
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class Echiquier implements BoardGames {
 	}
 
 	/**
-	 * @return une liste de PieceIHM qui pourra être exploitée par une IHM
+	 * @return une liste de PieceIHM qui pourra ï¿½tre exploitï¿½e par une IHM
 	 */
 	public java.util.List<PieceIHM> getPiecesIHM() {
 		List<PieceIHM> list = new LinkedList<PieceIHM>();
@@ -45,135 +45,191 @@ public class Echiquier implements BoardGames {
 	}
 
 	/**
-	 * Permet de vérifier si une pièce peut être déplacée. L'algo est le
-	 * suivant : s'il n'existe pas de piece du jeu courant aux coordonnées
-	 * initiales --> false, si les coordonnées finales ne sont pas valides ou
-	 * égales aux initiales --> false, si position finale ne correspond pas à 
-	 * algo de déplacement piece --> false, s'il existe une pièce
-	 * intermédiaire sur la trajectoire --> false (sauf cavalier), s'il existe
-	 * une pièce positionnées aux coordonnées finales : si elle est de la
-	 * même couleur --> false ou tentative roque du roi, sinon : prendre la
-	 * pièce intermédiaire (vigilance pour le cas du pion) et déplacer la
-	 * pièce -->true, sinon déplacer la pièce -->true
+	 * Permet de vï¿½rifier si une piï¿½ce peut ï¿½tre dï¿½placï¿½e. L'algo est le
+	 * suivant : s'il n'existe pas de piece du jeu courant aux coordonnï¿½es
+	 * initiales --> false, si les coordonnï¿½es finales ne sont pas valides ou
+	 * ï¿½gales aux initiales --> false, si position finale ne correspond pas ï¿½
+	 * algo de dï¿½placement piece --> false, s'il existe une piï¿½ce
+	 * intermï¿½diaire sur la trajectoire --> false (sauf cavalier), s'il existe
+	 * une piï¿½ce positionnï¿½es aux coordonnï¿½es finales : si elle est de la
+	 * mï¿½me couleur --> false ou tentative roque du roi, sinon : prendre la
+	 * piï¿½ce intermï¿½diaire (vigilance pour le cas du pion) et dï¿½placer la
+	 * piï¿½ce -->true, sinon dï¿½placer la piï¿½ce -->true
 	 *
 	 *
 	 * @param xInit
 	 * @param yInit
 	 * @param xFinal
 	 * @param yFinal
-	 * @return true si le déplacement est effectué, false sinon
+	 * @return true si le dï¿½placement est effectuï¿½, false sinon
 	 */
-	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal) {
+	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal)
+	{
+		//jeu Courant bien blanc
+		//	s'il n'existe pas de piece du jeu courant aux coordonnÃ©es initiales --> false,
+//		if(this.jeuCourant.isPieceHere(xInit, yInit)==false) //fait
+//		{
+//			System.out.println("KO : la piÃ¨ce sÃ©lÃ©ctionnÃ©e ne vous appartient pas !");
+//			return false;
+//			}
+//		System.out.println("x0 :"+xInit+" - y0 :"+yInit);
+//		System.out.println("xf :"+xFinal+" - yf :"+yFinal);
+
+
+		if(this.jeuCourant.isPieceHere(xInit, yInit)==false) //fait
+		{
+			System.out.println("KO : la piÃ¨ce sÃ©lÃ©ctionnÃ©e ne vous appartient pas !");
+			return false;
+			}
+		else if(this.jeuCourant.isPieceHere(xFinal, yFinal)==true)//fait
+		{
+			System.out.println("KO : dÃ©placement sur une piÃ¨ce du mÃªme joueur");
+
+			return false;
+		}
+		//		si les coordonnÃ©es finales ne sont pas valides ou Ã©gales aux initiales --> false,
+		else if(xInit==xFinal && yInit==yFinal)
+		{
+			System.out.println("KO : Aucun dÃ©placement n'a Ã©tÃ© appliquÃ©"); //fait
+
+			return false;
+			}
+		else if(Coord.coordonnees_valides(xFinal, yFinal)==false) //renvoi false si les coord ne sont pas valides
+		{
+			System.out.println("KO : les coordonnÃ©es finales ne sont pas valides");//fait
+			 return false;
+			}
+		//		si position finale ne correspond pas Ã   algo de dÃ©placement piece --> false,
+		else if(this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal)==false)//fait
+		{
+			System.out.println("KO : la position finale ne correspond pas a l'algo de dÃ©placement lÃ©gal de la piÃ¨ce");
+			return false;
+			}
 		
-		boolean bool =false;
-		if (this.jeuCourant.isPieceHere(xInit, yInit) == false)
+		
+		else if(this.jeuCourant.getPieceType(xInit, yInit).equals("Pion"))
 		{
-			System.out.println("KO : la pièce séléctionnée ne vous appartient pas !");
-			bool = false;
-		} else if (this.jeuCourant.isPieceHere(xFinal, yFinal) == true)
-		{
-			System.out.println("KO : déplacement sur une pièce du même joueur");
-
-			bool = false;
-		}
-		// si les coordonnées finales ne sont pas valides ou égales aux
-		// initiales --> false,
-		else if (xInit == xFinal && yInit == yFinal) {
-			System.out.println("KO : Aucun déplacement n'a été appliqué"); 
-
-			bool = false;
-		} 
-		else if (Coord.coordonnees_valides(xFinal, yFinal) == false){
-			System.out.println("KO : les coordonnÃ©es finales ne sont pas valides");
-			bool = false;
-		}
-		// si position finale ne correspond pas à algo de déplacement piece
-		// --> false,
-		else if (this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal) == false)// fait
-		{
-			System.out.println("KO : la position finale ne correspond pas au déplacement légal de la pièce");
-			bool = false;
-		}
-		else if (this.jeuCourant.getPieceType(xInit, yInit).equals("Pion")) {
-			System.out.println("Pion isMoveOk d'echiquier");
-			// return false si :
-			// avance droit + piÃ¨ce Ã  l'arrivÃ©e
-			// avance en diag. et PAS de piÃ¨ce Ã  l'arrivÃ©e
-
-			// renvoi true si:
-			// on peut avancer tout droit sans prÃ©sence de piece
-			// ou en diago si piece adverse prÃ©sente sauf si c'est roi
-
-			if (this.jeuNonCourant.isPieceHere(xFinal, yFinal) == false) // PAS de pièce à l'arrivée
-			{
-				// et avance en diag
-				if (this.jeuCourant.couleur == this.jeuBlanc.couleur) { // blancs=> Y descendant
-
-					if ((xFinal == xInit - 1 || xFinal == xInit + 1) && (yFinal != yInit - 1)) {
-						bool = false;
-					}
-
-				} else { // noirs => monte
-					if ((xFinal == xInit - 1 || xFinal == xInit + 1) && (yFinal != yInit + 1)) {
-						bool = false;
-					}
-
-				}
-			} else // CAS OU IL Y A UNE PIECE du JEU ADVERSE EN DIAGO (TJR POUR LE PION)
-			{
-
-				if (this.jeuCourant.couleur == this.jeuBlanc.couleur)// blanc
+				System.out.println("Pion isMoveOk d'echiquier");
+				// return false si :
+				// avance droit + piÃ¨ce Ã  l'arrivÃ©e
+				// avance en diag. et PAS de piÃ¨ce Ã  l'arrivÃ©e
+				
+				//renvoi true si:
+				//on peut avancer tout droit sans prÃ©sence de piece
+				// ou en diago si piece adverse prÃ©sente sauf si c'est roi
+	
+				if(this.jeuNonCourant.isPieceHere(xFinal, yFinal)==false) // PAS de piÃ¨ce Ã  l'arrivÃ©e
 				{
-					if ((yFinal == yInit - 1) && this.jeuNonCourant.getPieceType(xFinal, yFinal) != "Roi")
-					{
-						System.out.println("Roi ou tentative de deplacement vers le bas (alors que tu as un jeu blanc)");
-						bool = true;
-					}
-					bool = false;
-				} 
-				else {
-					if ((yFinal == yInit + 1) && this.jeuNonCourant.getPieceType(xFinal, yFinal) != "Roi")
-					{
-						System.out.println("Roi ou tentative de deplacement vers le haut (alors que tu as un jeu noir)");
-						bool = true;
-					}
-					bool = false;
+	
+					// et avance en diag
+						if(this.jeuCourant.couleur==this.jeuBlanc.couleur)
+						{ // blancs => Y descendant
+		
+							if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))
+							{
+								System.out.println("isMoveOk_0");
+		
+								return false;
+							}	
+		
+						} 
+						else 
+						{ //noirs => monte
+							if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))	
+							{
+								System.out.println("isMoveOk_1");
+		
+								return false;
+							}
+								
+						}
 				}
-			}
-
-			if (this.jeuCourant.couleur == this.jeuBlanc.couleur) // jeu blanc
-			{
-				System.out.println("check Couleur : Blanc _ isMoveOk d'echiquier");
-				if (yFinal == yInit - 1 || yFinal == yInit - 2) 
+			else //CAS OU IL Y A UNE PIECE du JEU ADVERSE EN DIAGO(TJR POUR LE PION)
 				{
-					bool = true;
-				} 
-				else {
-					bool = false;
-				}
-			} 
-			else{
-				if (yFinal == yInit + 1 || yFinal == yInit + 2) {
+		
+						if(this.jeuCourant.couleur==this.jeuBlanc.couleur)//blanc
+						{ 
+							if((yFinal==yInit-1) && this.jeuNonCourant.getPieceType(xFinal, yFinal)!="Roi" )//piÃ¨ce noir Ã  l'arrivÃ© //ATTENTION, VERIFIER QUE CE N'EST PAS LE ROI
+							{
+								this.jeuNonCourant.capture(xFinal, yFinal);
+								return true;
+							}
+							System.out.println("Roi ou tentative de deplacement vers le bas (alors que tu as un jeu blanc)");
+
+							return false;
+						} 
+						else //pour les noirs
+						{ 
+							if((yFinal==yInit+1) && this.jeuNonCourant.getPieceType(xFinal, yFinal)!="Roi" )//piÃ¨ce noir Ã  l'arrivÃ© //ATTENTION, VERIFIER QUE CE N'EST PAS LE ROI
+							{
+								this.jeuNonCourant.capture(xFinal, yFinal);
+
+								return true;
+							}
+							System.out.println("Roi ou tentative de deplacement vers le haut (alors que tu as un jeu noir)");
+
+							return false;
+						}
 					
-					bool = true;
-				} 
-				else {
-					bool = false;
+				}
+
+			if(this.jeuCourant.couleur==this.jeuBlanc.couleur) //jeu blanc
+			{
+//				System.out.println("check Couleur : Blanc _ isMoveOk d'echiquier");
+				if(yFinal==yInit-1 || yFinal==yInit-2) //verifie qu'on avance bien droit et dans la bonne direction
+				{
+					//System.out.println("Le pion blanc va en haut donc OK");
+
+					return true;
+				}
+				else
+				{
+					//System.out.println("Le pion blanc va en bas donc KO");
+					return false;
+				}
+			}
+			else//jeux noir
+			{
+				if(yFinal==yInit+1 || yFinal==yInit+2) //verifie qu'on avance bien droit et dans la bonne direction
+				{
+					//System.out.println("Le pion noir va en haut donc OK");
+
+					return true;
+				}
+				else
+				{
+					//System.out.println("Le pion noir va en bas donc KO");
+					return false;
 				}
 			}
 		}
-		if (this.jeuNonCourant.isPieceHere(xFinal, yFinal)) {
+			//pas de piece adverse Ã  l'azrrivÃ© donc de l'autre couleur osus entendu
+			
+			//System.out.println("OK : dÃ©placement simple_0");
+			//capture de pion
+		
 
-			System.out.println("Capture");
-			bool = true;
-		}
-		// s'il existe une piÃ¨ce positionnÃ©es aux coordonnÃ©es finales :
-		// si elle est de la mÃªme couleur --> false ou tentative roque du roi,
-
-		// sinon dÃ©placer la piÃ¨ce -->true
-		bool = true;
-
-		return bool;
+		
+		//FIN PION
+		
+			
+			 if(this. jeuNonCourant.isPieceHere(xFinal, yFinal))
+			 {
+				
+				// prendre la piÃ¨ce intermÃ©diaire (vigilance pour le cas du pion) et dÃ©placer la piÃ¨ce -->true,
+					this.jeuNonCourant.capture(xFinal, yFinal);
+					
+					System.out.println("Capture par une autre piÃ¨ce que le pion (echiquier.java)");
+					return true;
+			}
+		//		s'il existe une piÃ¨ce positionnÃ©es aux coordonnÃ©es finales :
+		//si elle est de la mÃªme couleur --> false ou tentative roque du roi,
+		 
+		 //sinon dÃ©placer la piÃ¨ce -->true
+		//TODO
+		System.out.println("OK : dÃ©placement simple");
+		return true;
+	
 	}
 
 	/**

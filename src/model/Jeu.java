@@ -6,7 +6,7 @@ import java.util.List;
 import tools.ChessPiecesFactory;
 
 /**
- * Gère les paramètres du jeu, l'affichage, la présence de pièce sur le damier, la validation du déplacement des pièces et la promotion
+ * Gï¿½re les paramï¿½tres du jeu, l'affichage, la prï¿½sence de piï¿½ce sur le damier, la validation du dï¿½placement des piï¿½ces et la promotion
  */
 public class Jeu {
 
@@ -186,8 +186,31 @@ public class Jeu {
 		return retour;
 	}
 
-	public boolean capture(int xCatch, int yCatch) {
-		return true;
+	public boolean capture(int xCatch,int yCatch)
+	{
+		boolean bool=false;
+		Pieces p = null;
+		if(isPieceHere(xCatch,yCatch)==true)
+		{
+			p=findPiece(xCatch,yCatch);
+		}
+		System.out.println("Piece CapturÃ©e : "+p);
+		if(p.capture()==true)			//met en -1 ;-1 methode de abstract piece POLYMORPHISME MA GEULE
+		{
+			bool=true;
+		}
+		for(Pieces p1 :pieces)
+		{  
+			if(p1.getX()==-1 && p1.getY()==-1)
+			{
+				System.out.println("Toutes les piÃ¨ces en -1 ,-1 : "+p1+"\n");
+				
+	
+			}
+			
+		}
+		return bool;		
+		
 	}
 
 	/**
