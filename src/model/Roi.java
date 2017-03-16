@@ -1,35 +1,42 @@
 package model;
 
-public class Roi extends AbstractPiece{
-	
+/**
+ * R�sum� Creation roi avec couleur et coordonn�es Valide le
+ * d�placement de base du roi
+ *
+ */
+public class Roi extends AbstractPiece {
+
 	/**
 	 * @param couleur_de_piece
 	 * @param coord
 	 */
-	public Roi(Couleur couleur_de_piece, Coord coord){
+	public Roi(Couleur couleur_de_piece, Coord coord) {
 		super(couleur_de_piece, coord);
 	}
 
-/** Résumé
- * Valide les déplacements tout autour de lui et d'une case mais ne vérifie pas s'il y a une piece sur le chemin
- * @param xFinal colonne
- * @param yFinal ligne
- * @return true si le mouvement est validé 
- * 
- */
-	public boolean isMoveOk(int xFinal, int yFinal)
-	{
+	/**
+	 * Résumé Valide les déplacements tout autour de lui et d'une case mais
+	 * ne vérifie pas s'il y a une piece sur le chemin
+	 * 
+	 * @param xFinal
+	 *            colonne
+	 * @param yFinal
+	 *            ligne
+	 * @return true si le mouvement est validé
+	 * 
+	 */
+	public boolean isMoveOk(int xFinal, int yFinal) {
 		boolean bool = false;
-		if(coord.x + 1 == xFinal || coord.y + 1 == yFinal 
-				|| coord.x +1 == coord.y +1 || coord.x -1 == coord.y -1 
-				|| coord.x -1 == coord.y +1 || coord.x +1 == coord.y -1)
-			
+		if (coord.x + 1 == xFinal || coord.y + 1 == yFinal || coord.x + 1 == coord.y + 1 || coord.x - 1 == coord.y - 1
+				|| coord.x - 1 == coord.y + 1 || coord.x + 1 == coord.y - 1)
+
 			bool = true;
 		else
-			
+
 			bool = false;
-	
-	return bool;	
+
+		return bool;
 	}
 
 }

@@ -12,7 +12,7 @@ public interface BoardGames {
 
 	/**
 	 * Permet de deplacer une piece connaissant ses coordonnees initiales 
-	 * vers ses coordonnees finales 	 *  
+	 * vers ses coordonnees finales 
 	 * @param xInit
 	 * @param yInit
 	 * @param xFinal
@@ -27,7 +27,7 @@ public interface BoardGames {
 	public boolean isEnd();
 
 	/**
-	 * @return un message sur l'Ã©tat du jeu
+	 * @return un message sur l'état du jeu
 	 */
 	public String getMessage();
 
@@ -39,7 +39,7 @@ public interface BoardGames {
 	/**
 	 * @param x
 	 * @param y
-	 * @return la couleur de la piÃ¨ce sÃ©lectionnÃ©e
+	 * @return la couleur de la pièce sélectionnée
 	 */
 	public Couleur getPieceColor(int x, int y);
  

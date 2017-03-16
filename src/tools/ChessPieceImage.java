@@ -19,8 +19,7 @@ public enum ChessPieceImage {
 	FOUNOIR( "FouNOIR", "fouNoirS.png"), 
 	REINENOIR("ReineNOIR", "reineNoireS.png"), 
 	ROINOIR("RoiNOIR", "roiNoirS.png"),
-	PIONNOIR("PionNOIR", "pionNoirS.png")   
-	; 
+	PIONNOIR("PionNOIR", "pionNoirS.png"); 
 	
 	
 	

@@ -1,7 +1,7 @@
 package model;
 
 public interface Pions {
-	
-	boolean isMoveDiagOk(int xFinal,int yFinal);
+
+	boolean isMoveDiagOk(int xFinal, int yFinal);
 
 }

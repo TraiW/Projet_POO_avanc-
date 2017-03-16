@@ -1,95 +1,86 @@
 package model;
 
 /**
- * R√©sum√©
- * G√®re le comportement commun √† toutes les pi√®ces
- * Chaque pi√®ce qui d√©rive sera capable de dire si le d√©placement est OK
+ * R√©sum√© G√®re le comportement commun √† toutes les pi√®ces Chaque pi√®ce qui
+ * d√©rive sera capable de dire si le d√©placement est OK
  *
  */
-public abstract class AbstractPiece implements Pieces{
-	
+public abstract class AbstractPiece implements Pieces {
 
-	public Coord coord=null;
-	public Couleur couleur=null;
-	
+	public Coord coord = null;
+	public Couleur couleur = null;
+
 	/**
 	 * @param couleur
 	 * @param coord
 	 */
-	public AbstractPiece(Couleur couleur, Coord coord){
-		this.couleur=couleur;
-		this.coord=coord;
-		
+	public AbstractPiece(Couleur couleur, Coord coord) {
+		this.couleur = couleur;
+		this.coord = coord;
+
 	}
-	
-/**
- * @return true si la piece est captur√©e
- * Position x et y √† -1
- */
-	public boolean capture(){
-		this.coord.x=-1;
-		this.coord.y=-1;
+
+	/**
+	 * @return true si la piece est capturÈe Position x et y ‡†-1 pour la supprimer du plateau
+	 */
+	public boolean capture() {
+		this.coord.x = -1;
+		this.coord.y = -1;
 		return true;
-		
+
 	}
-/**
- * @return la couleur de la pi√®ce
- */
-	public Couleur getCouleur(){
+
+	/**
+	 * @return la couleur de la piËce
+	 */
+	public Couleur getCouleur() {
 		return this.couleur;
 	}
-	
-	public int getX(){
+
+	/**
+	 * @return cooronnÈe x de la piËce
+	 * */
+	public int getX() {
 		return this.coord.x;
 	}
-	
-	public int getY(){
+
+	/**
+	 * @return cooronnÈe y de la piËce
+	 * */
+	public int getY() {
 		return this.coord.y;
 	}
-	
-	
-/**
- * @return true si d√©placement l√©gal en fonction 
- * des algo de d√©placement sp√©cifique de chaque pi√®ce
- */
-	public abstract boolean isMoveOk(int xFinal,int yFinal);
 
-	
-/**
- * @return true si le deplacement est effectu√©
- */
-	public boolean move(int xFinal, int yFinal){
-		boolean bool;
-		if(xFinal==-1 && yFinal==1)
-		{
-			return true;
+	/**
+	 * @param xFinal et yFinal coordonnÈes finales de la piËce
+	 * @return true si dÈplacement lÈgal en fonction des algo de dÈplacement
+	 *         spÈcifique de chaque piËce
+	 */
+	public abstract boolean isMoveOk(int xFinal, int yFinal);
+
+	/**
+	 * @param xFinal et yFinal coordonnÈes finales de la piËce
+	 * @return true si le deplacement est effectuÈ et modifie les coordonnÈes de la piËce aux coordonnÈes finales
+	 */
+	public boolean move(int xFinal, int yFinal) {
+		boolean bool = false;
+		if (xFinal == -1 && yFinal == 1) {
+			bool = true;
 		}
-		
-		if(isMoveOk(xFinal,yFinal)==true)
-		{
-			this.coord.x=xFinal;
-			this.coord.y=yFinal;
-			System.out.println("d√©placement effectu√©");
-			return true;
+
+		if (isMoveOk(xFinal, yFinal) == true) {
+			this.coord.x = xFinal;
+			this.coord.y = yFinal;
+			bool = true;
 		}
-		System.out.println("deplacement refus√©");
-		return false;
-		
+		bool = false;
+
+		return bool;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName()+"[coord=" + coord + ", couleur=" + couleur + "] \n";
+		return this.getClass().getSimpleName() + "[coord=" + coord + ", couleur=" + couleur + "] \n";
 	}
-//	public static void main(String[] args) 
-//	{
-////		Pieces testTour= new Fou(Couleur.NOIR,new Coord(5,6));
-////		System.out.println("cr√©ation tour");
-////		System.out.println("La tour bouge en 0,5");
-////		testTour.move(4,5);
-////		System.out.println("La tour a bien boug√©");
-//		 
-//	}
 
 }

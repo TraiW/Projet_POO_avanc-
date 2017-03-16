@@ -1,10 +1,15 @@
 package controler;
 
 import model.Coord;
-
+/**
+ * Ce controleur local précise comment empêcher un
+ *         joueur à qui ce n'est pas le tour de jouer, de déplacer une image
+ *         de pièce sur le damier
+ *Interface de la clasee ChessGameControlers
+ *
+ */
 public interface ChessGameControlers {
 
-	
 	/**
 	 * @param initCoord
 	 * @param finalCoord
@@ -16,7 +21,7 @@ public interface ChessGameControlers {
 	 * @return message relatif aux déplacement, capture, etc.
 	 */
 	public String getMessage();
-	
+
 	/**
 	 * @return true si fin de partie OK (echec et mat, pat, etc.)
 	 */
@@ -24,8 +29,8 @@ public interface ChessGameControlers {
 
 	/**
 	 * @param initCoord
-	 * @return une info dont la vue se servira 
-	 * pour empêcher tout déplacement sur le damier
+	 * @return une info dont la vue se servira pour empêcher tout déplacement
+	 *         sur le damier
 	 */
 	public boolean isPlayerOK(Coord initCoord);
 

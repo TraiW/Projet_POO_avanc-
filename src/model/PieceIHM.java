@@ -4,17 +4,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author francoise.perrin
- * Classe qui permet de retourner des informations sur les piÃ¨ces
- * en vue d'une utilisation par une IHM
+ * @author francoise.perrin Classe qui permet de retourner des informations sur
+ *         les piÃ¨ces en vue d'une utilisation par une IHM
  * 
  */
-public  class PieceIHM {
-	 
+public class PieceIHM {
+
 	String type;
 	Couleur couleur;
 	List<Coord> list;
-	
+
 	/**
 	 * @param type
 	 * @param couleur
@@ -24,11 +23,12 @@ public  class PieceIHM {
 		this.couleur = couleur;
 		list = new LinkedList<Coord>();
 	}
-	
+
 	/**
 	 * @param coord
+	 * @return liste des coordonnées de toutes les pièces
 	 */
-	public void add(Coord coord){
+	public void add(Coord coord) {
 		list.add(coord);
 	}
 
@@ -53,12 +53,15 @@ public  class PieceIHM {
 		return list;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		//return "PieceIHM [type=" + type + ", couleur=" + couleur + ", list="+ list + "]\n";
+		// return "PieceIHM [type=" + type + ", couleur=" + couleur + ", list="+
+		// list + "]\n";
 		return "";
 	}
 }
