@@ -65,51 +65,40 @@ public class Echiquier implements BoardGames {
 	 */
 	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal)
 	{
-		//jeu Courant bien blanc
-		//	s'il n'existe pas de piece du jeu courant aux coordonnées initiales --> false,
-//		if(this.jeuCourant.isPieceHere(xInit, yInit)==false) //fait
-//		{
-//			System.out.println("KO : la pièce séléctionnée ne vous appartient pas !");
-//			return false;
-//			}
-//		System.out.println("x0 :"+xInit+" - y0 :"+yInit);
-//		System.out.println("xf :"+xFinal+" - yf :"+yFinal);
-
-
+		boolean bool = false ;
 		if(this.jeuCourant.isPieceHere(xInit, yInit)==false) //fait
 		{
 			System.out.println("KO : la pièce séléctionnée ne vous appartient pas !");
-			return false;
+			bool = false;
 			}
 		else if(this.jeuCourant.isPieceHere(xFinal, yFinal)==true)//fait
 		{
 			System.out.println("KO : déplacement sur une pièce du même joueur");
 
-			return false;
+			bool = false;
 		}
 		//		si les coordonnées finales ne sont pas valides ou égales aux initiales --> false,
 		else if(xInit==xFinal && yInit==yFinal)
 		{
 			System.out.println("KO : Aucun déplacement n'a été appliqué"); //fait
 
-			return false;
+			bool = false;
 			}
 		else if(Coord.coordonnees_valides(xFinal, yFinal)==false) //renvoi false si les coord ne sont pas valides
 		{
 			System.out.println("KO : les coordonnées finales ne sont pas valides");//fait
-			 return false;
+			 bool = false;
 			}
 		//		si position finale ne correspond pas à  algo de déplacement piece --> false,
 		else if(this.jeuCourant.isMoveOk(xInit, yInit, xFinal, yFinal)==false)//fait
 		{
 			System.out.println("KO : la position finale ne correspond pas a l'algo de déplacement légal de la pièce");
-			return false;
+			bool = false;
 			}
 		
 		
 		else if(this.jeuCourant.getPieceType(xInit, yInit).equals("Pion"))
 		{
-				System.out.println("Pion isMoveOk d'echiquier");
 				// return false si :
 				// avance droit + pièce à l'arrivée
 				// avance en diag. et PAS de pièce à l'arrivée
@@ -127,19 +116,16 @@ public class Echiquier implements BoardGames {
 		
 							if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit-1))
 							{
-								System.out.println("isMoveOk_0");
 		
-								return false;
+								bool = false;
 							}	
 		
 						} 
 						else 
 						{ //noirs => monte
 							if((xFinal==xInit-1|| xFinal==xInit+1) && (yFinal!=yInit+1))	
-							{
-								System.out.println("isMoveOk_1");
-		
-								return false;
+							{		
+								bool = false;
 							}
 								
 						}
@@ -152,11 +138,11 @@ public class Echiquier implements BoardGames {
 							if((yFinal==yInit-1) && this.jeuNonCourant.getPieceType(xFinal, yFinal)!="Roi" )//pièce noir à l'arrivé //ATTENTION, VERIFIER QUE CE N'EST PAS LE ROI
 							{
 								this.jeuNonCourant.capture(xFinal, yFinal);
-								return true;
+								bool = true;
 							}
 							System.out.println("Roi ou tentative de deplacement vers le bas (alors que tu as un jeu blanc)");
 
-							return false;
+							bool = false;
 						} 
 						else //pour les noirs
 						{ 
@@ -164,53 +150,41 @@ public class Echiquier implements BoardGames {
 							{
 								this.jeuNonCourant.capture(xFinal, yFinal);
 
-								return true;
+								bool = true;
 							}
 							System.out.println("Roi ou tentative de deplacement vers le haut (alors que tu as un jeu noir)");
 
-							return false;
+							bool = false;
 						}
 					
 				}
 
 			if(this.jeuCourant.couleur==this.jeuBlanc.couleur) //jeu blanc
 			{
-//				System.out.println("check Couleur : Blanc _ isMoveOk d'echiquier");
 				if(yFinal==yInit-1 || yFinal==yInit-2) //verifie qu'on avance bien droit et dans la bonne direction
 				{
-					//System.out.println("Le pion blanc va en haut donc OK");
 
-					return true;
+					bool = true;
 				}
 				else
 				{
-					//System.out.println("Le pion blanc va en bas donc KO");
-					return false;
+					bool = false;
 				}
 			}
 			else//jeux noir
 			{
 				if(yFinal==yInit+1 || yFinal==yInit+2) //verifie qu'on avance bien droit et dans la bonne direction
 				{
-					//System.out.println("Le pion noir va en haut donc OK");
 
-					return true;
+					bool = true;
 				}
 				else
 				{
-					//System.out.println("Le pion noir va en bas donc KO");
-					return false;
+					bool = false;
 				}
 			}
 		}
 			//pas de piece adverse à l'azrrivé donc de l'autre couleur osus entendu
-			
-			//System.out.println("OK : déplacement simple_0");
-			//capture de pion
-		
-
-		
-		//FIN PION
 		
 			
 			 if(this. jeuNonCourant.isPieceHere(xFinal, yFinal))
@@ -220,7 +194,7 @@ public class Echiquier implements BoardGames {
 					this.jeuNonCourant.capture(xFinal, yFinal);
 					
 					System.out.println("Capture par une autre pièce que le pion (echiquier.java)");
-					return true;
+					bool = true;
 			}
 		//		s'il existe une pièce positionnées aux coordonnées finales :
 		//si elle est de la même couleur --> false ou tentative roque du roi,
@@ -228,8 +202,9 @@ public class Echiquier implements BoardGames {
 		 //sinon déplacer la pièce -->true
 		//TODO
 		System.out.println("OK : déplacement simple");
-		return true;
+		bool = true;
 	
+		return bool;
 	}
 
 	/**
